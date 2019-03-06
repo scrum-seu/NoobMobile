@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "src/login/login",
+    "src/main/main",
+    "src/recommend/recommend",
+    "src/myinfo/myinfo"
+  ],
+
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小程序",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "src/recommend/recommend",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "src/myinfo/myinfo",
+        "text": "我的"
+      }
+    ]
+  }
+}

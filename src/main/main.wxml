@@ -1,0 +1,3 @@
+<view>
+  <view>Hello {{nickname}}</view>
+</view>
