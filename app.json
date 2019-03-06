@@ -22,11 +22,15 @@
     "list": [
       {
         "pagePath": "src/recommend/recommend",
-        "text": "推荐"
+        "text": "推荐",
+        "iconPath": "src/images/recommend-unselected.png",
+        "selectedIconPath": "src/images/recommend-selected.png"
       },
       {
         "pagePath": "src/myinfo/myinfo",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "src/images/user-unselected.png",
+        "selectedIconPath": "src/images/user-selected.png"
       }
     ]
   }

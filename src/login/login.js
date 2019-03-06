@@ -62,9 +62,10 @@ Page({
       gender: this.data.userInfo['gender']
     }
     var info_json = JSON.stringify(info)
-    // console.log(info_json)
+    app.globalData.userinfo = info_json
+    // console.log(app.globalData.userinfo)
     wx.switchTab({
-      url: '/src/recommend/recommend?info=' + info_json
+      url: '/src/recommend/recommend'
     })
   }
 })

@@ -6,6 +6,7 @@ bin-release/
 
 # Other files and folders
 .settings/
+project.config.json
 
 # Executables
 *.swf
