@@ -1,20 +1,39 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class='super'>
   <view class="container">
+
     <view class="usermotto">
       <text class="user-motto">{{motto}}</text>
     </view>
+
     <view class="userinfo">
-      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type='primary'> 获取头像 </button>
-      <block wx:else>
+      <!-- 将获取授权的按钮注释，填入摄像头组件 -->
+      <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type='primary'> 获取头像 </button> -->
+      <!-- <block wx:else>
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+      </block> -->
+      <image class="facePic" mode="aspectFit" src="{{userInfo.imageUrl}}" background-size="cover"></image>
+      <text class="userinfo-msg">{{userInfo.msg}}</text>
+      <!-- class="userinfo-msg" 未设置样式 -->
+      <!-- <button class='btn' bindtap="showCam">人脸拍照</button> -->
     </view>
+
+    <checkbox-group bindchange="checkboxChange" class="check_info">
+      <checkbox value="true" checked="" class='box' disabled="{{ifCheckDisable}}" />
+      同意遵守Noob Mobile的
+      <text class="user-agree" catchtap="showAgreement">《用户协议》</text>
+      。
+    </checkbox-group>
+
     <view class='btn_block'>
-      <button class='btn' type='primary'>完善信息</button>
-      <button class='btn' type='primary' bindtap='login_main'>登陆     </button>
+      <button class='btn' bindtap='fill_info' disabled="{{ifFillDisable}}">完善信息</button>
+      <button class='btn' bindtap='showCam' disabled="{{ifLoginDisable}}">{{btnText}}</button>
     </view>
+
+    <view class='copyright'>
+      <text class="right-msg">©CopyRight 2019 Noob Team All Rights Reserved.</text>
+    </view>
+
   </view>
 </view>
- 

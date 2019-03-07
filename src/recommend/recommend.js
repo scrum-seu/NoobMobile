@@ -35,11 +35,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(app.globalData.userinfo)
-    var userinfo = JSON.parse(app.globalData.userinfo)
-    this.setData({ nickname: userinfo["name"], gender: userinfo["gender"] })
-  },
+  // onLoad: function (options) {
+  //   // console.log(app.globalData.userinfo)
+  //   var userinfo = JSON.parse(app.globalData.userinfo)
+  //   this.setData({ nickname: userinfo["name"], gender: userinfo["gender"] })
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

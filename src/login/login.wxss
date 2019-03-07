@@ -1,6 +1,6 @@
 /**index.wxss**/
 page {
-  background-color: #add8e6;
+  background-color: #c8dfe7;
 }
 
 .container {
@@ -14,10 +14,22 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100rpx;
+  margin-top: 120rpx;
 }
 
-.userinfo-avatar {
+.facePic {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 50rpx;
+  margin-bottom: 100rpx;
+  border-radius: 15%;
+}
+
+.userinfo-msg{
+  margin-bottom: 100rpx;
+}
+
+/* .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
@@ -26,11 +38,34 @@ page {
 
 .userinfo-nickname {
   color: #aaa;
-}
+} */
+
+
 
 .usermotto {
   margin-top: 10rpx;
   font-size: 30rpx;
+  text-shadow:  3px 3px 0px rgba(110, 110, 110, 0.363);
+}
+
+
+
+.box {
+  margin: 5rpx;
+}
+
+.user-agree{
+    color: #5ec9ba;
+}
+
+.check_info{
+  margin-top: 80rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #666;
 }
 
 .btn_block {
@@ -42,6 +77,19 @@ page {
 }
 
 .btn {
-  margin-top: 80%;
+  margin-top: 70rpx;
   width: 100px;
+  background: #ececec;
+  box-shadow: 3px 3px 3px 0px rgba(110, 110, 110, 0.363);
+
+}
+
+.copyright{
+  align-items: center;
+  margin-top: 77rpx;
+}
+
+.right-msg{
+  text-shadow:  3px 3px 0px rgba(110, 110, 110, 0.363);
+  font-size: 16rpx;
 }

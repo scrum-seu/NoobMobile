@@ -36,8 +36,11 @@ App({
       }
     })
   },
+
   globalData: {
-    userInfo: null
+    userInfo: null,
+    user_id: null
+    // 登陆之后user_id用于保存检测到用户的id
   },
 
   /**
