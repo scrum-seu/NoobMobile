@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="yearContainer">
+        <button class='btnLeft' bindtap='yearBtnLeft'>
+            <image class='btnLeftImg' src='{{btnLeftPath}}' mode='scaleToFill'></image>
+        </button>
+        <text class='yearText'>{{year}}</text>
+        <button class='btnRight' bindtap='yearBtnRight'>
+            <image class='btnRightImg' src='{{btnRightPath}}' mode='scaleToFill'></image>
+        </button>
+    </view>
+
+
+
+    <view class="lineChartContainer">
+        
+
+    </view>
+
+
+
+</view>

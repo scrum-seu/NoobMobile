@@ -1,9 +1,9 @@
 {
   "pages": [
+    "src/myinfo/myinfo",
     "src/login/login",
-    "src/main/main",
-    "src/recommend/recommend",
-    "src/myinfo/myinfo"
+    "src/recommend/recommend"
+    
   ],
 
   "window": {
@@ -17,7 +17,7 @@
 
   "tabBar": {
     "color": "#a9b7b7",
-    "selectedColor": "#11cd6e",
+    "selectedColor": "#1063fd",
     "borderStyle": "black",
     "list": [
       {

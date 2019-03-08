@@ -4,10 +4,13 @@ page {
 }
 
 .container {
+  
+  /* bottom:0px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position:relative;
 }
 
 .userinfo {
@@ -78,6 +81,7 @@ page {
 
 .btn {
   margin-top: 70rpx;
+  /* width: 250rpx; */
   width: 100px;
   background: #ececec;
   box-shadow: 3px 3px 3px 0px rgba(110, 110, 110, 0.363);
@@ -85,8 +89,10 @@ page {
 }
 
 .copyright{
-  align-items: center;
-  margin-top: 77rpx;
+  /* align-items: center; */
+  /* align-self: center; */
+  position: fixed;
+  bottom: 20rpx;
 }
 
 .right-msg{
