@@ -1,20 +1,23 @@
 <view class="container">
-    <view class="yearContainer">
-        <button class='btnLeft' bindtap='yearBtnLeft'>
-            <image class='btnLeftImg' src='{{btnLeftPath}}' mode='scaleToFill'></image>
-        </button>
-        <text class='yearText'>{{year}}</text>
-        <button class='btnRight' bindtap='yearBtnRight'>
-            <image class='btnRightImg' src='{{btnRightPath}}' mode='scaleToFill'></image>
-        </button>
+  <view class="yearContainer">
+    <button class='btnLeft' bindtap='yearBtnLeft'>
+      <image class='btnLeftImg' src='{{btnLeftPath}}' mode='scaleToFill'></image>
+    </button>
+    <text class='yearText'>{{year}}</text>
+    <button class='btnRight' bindtap='yearBtnRight'>
+      <image class='btnRightImg' src='{{btnRightPath}}' mode='scaleToFill'></image>
+    </button>
+  </view>
+
+
+  <view class="superChartContainer">
+    <text class="chartCaption">{{year}}年消费总额变化情况</text>
+
+    <view class="lineChartContainer" style='width:{{canvasWidth}}px; height:{{canvasHeight}}px'>
+      <ec-canvas  id="userLineChart" canvas-id="userChart-Line" ec="{{ ec }}"></ec-canvas>
     </view>
 
-
-
-    <view class="lineChartContainer">
-        
-
-    </view>
+  </view>
 
 
 

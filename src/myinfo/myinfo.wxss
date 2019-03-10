@@ -1,67 +1,84 @@
 /* src/myinfo/myinfo.wxss */
+
 page {
-    background-color: #f1f1f1;
-  }
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  background-color: #fcfcfc;
 }
 
-
-.yearContainer{
-    width: 100%;
-    height: 150rpx;
-    background-color: #c8dfe7;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.btnLeft{
-    width: 65px;
-    height: 45px;
-    background: none;
-    display: flex;
-    align-items: center;
-    margin-left: 50rpx;
-}
-.btnLeft::after{
-    border: 0;
+.yearContainer {
+  width: 100%;
+  height: 150rpx;
+  background-color: #c8dfe7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.btnLeftImg{
-    width: 35px;
-    height: 35px;
-
+.btnLeft {
+  width: 65px;
+  height: 45px;
+  background: none;
+  display: flex;
+  align-items: center;
+  margin-left: 50rpx;
 }
 
-.btnRight{
-    width: 65px;
-    height: 45px;
-    background: none;
-    display: flex;
-    align-items: center;
-    margin-right: 50rpx;
+.btnLeft::after {
+  border: 0;
 }
 
-.btnRightImg{
-    width: 35px;
-    height: 35px;
-}
-.btnRight::after{
-    border: 0;
+.btnLeftImg {
+  width: 35px;
+  height: 35px;
 }
 
+.btnRight {
+  width: 65px;
+  height: 45px;
+  background: none;
+  display: flex;
+  align-items: center;
+  margin-right: 50rpx;
+}
 
-.lineChartContainer{
-    width: 100%;
-    height: 300rpx;
-    /* bottom: 0px;
+.btnRightImg {
+  width: 35px;
+  height: 35px;
+}
+
+.btnRight::after {
+  border: 0;
+}
+
+.chartCaption {
+  /* font-weight: bold; */
+  text-shadow: 3px 3px 0px rgba(110, 110, 110, 0.363);
+  /* align-self: center;
     position: fixed; */
-    background-color: #c8dfe7;
-
 }
+
+.superChartContainer {
+  width: 100%;
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+/* 
+.lineChartContainer {
+  width: 100%;
+  height: 600rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+} */
+

@@ -1,11 +1,9 @@
 {
   "pages": [
     "src/myinfo/myinfo",
-    "src/login/login",
-    "src/recommend/recommend"
-    
+    "src/recommend/recommend",
+    "src/login/login"
   ],
-
   "window": {
     "navigationBarBackgroundColor": "#c8dfe7",
     "navigationBarTextStyle": "black",
@@ -14,23 +12,22 @@
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
   },
-
   "tabBar": {
     "color": "#a9b7b7",
     "selectedColor": "#1063fd",
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "src/recommend/recommend",
-        "text": "推荐",
-        "iconPath": "src/images/recommend-unselected.png",
-        "selectedIconPath": "src/images/recommend-selected.png"
-      },
-      {
         "pagePath": "src/myinfo/myinfo",
         "text": "我的",
         "iconPath": "src/images/user-unselected.png",
         "selectedIconPath": "src/images/user-selected.png"
+      },
+      {
+        "pagePath": "src/recommend/recommend",
+        "text": "推荐",
+        "iconPath": "src/images/recommend-unselected.png",
+        "selectedIconPath": "src/images/recommend-selected.png"
       }
     ]
   }
