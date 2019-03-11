@@ -5,6 +5,8 @@ page {
 }
 
 .container {
+  /* background-color: #e61b1b; */
+  height: 1070rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +21,32 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.monthChooseContainer {
+  width: 100%;
+  height: 150rpx;
+  background-color: #c8dfe7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.pickerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.captionContainer{
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 700rpx;
+  /* justify-content: space-between; */
 }
 
 .btnLeft {
@@ -53,6 +81,20 @@ page {
   height: 35px;
 }
 
+.datePickerImg {
+  width: 35px;
+  height: 35px;
+  margin-left: -68rpx;
+  /* margin-left: 100rpx; */
+}
+
+.dateCaption {
+  /* align-content: center;
+  align-items: center;
+  align-self: center; */
+  margin: auto;
+}
+
 .btnRight::after {
   border: 0;
 }
@@ -66,12 +108,28 @@ page {
 
 .superChartContainer {
   width: 100%;
+  /* height: 100%; */
   margin-top: 50rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
+
+.bottomCaption {
+  font-size: 11px;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  color: #a5a5a5;
+}
+
+.tabImage {
+  bottom: 40rpx;
+  position: fixed;
+  height: 30rpx;
+  width: 53.4rpx;
+}
+
 /* 
 .lineChartContainer {
   width: 100%;
@@ -81,4 +139,3 @@ page {
   align-items: center;
   justify-content: space-between;
 } */
-

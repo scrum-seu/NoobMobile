@@ -1,16 +1,98 @@
 //获取应用实例
 import * as echarts from '../utils/echarts'; //引入echarts.js
 
+//模拟用假数据
 
-var dataList = [350,600,120,800,33,500,450,500,200,1200,99,300];
-var dataListAVG = [123, 435, 12, 257, 62, 45, 4657, 36, 524, 25, 99, 300];
+var linedataList = [[160, 8600, 121, 800, 8333, 500, 6000, 2500, 200, 200, 399, 3200], [160, 1600, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+var linedataListAVG = [123, 435, 12, 257, 62, 45, 4657, 36, 524, 25, 99, 300];
+
+var raderdataList = [[[0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45]], [[0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.662, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.126, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.64356, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.61623, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45]], [[0.123, 0.435, 0.12, 0.257, 0.62, 0.645], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.6435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.645], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45]], [[0.123, 0.435, 0.12, 0.257, 0.62, 0.645], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45]], [[0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.645], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45]], [[0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.645], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.6257, 0.62, 0.45], [0.6123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.612, 0.257, 0.62, 0.45]]];
+var raderdataListAVG = [[0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45], [0.123, 0.435, 0.12, 0.257, 0.62, 0.45]];
+
+
+
+var i = 0;//记录当前图标显示年份的变量
 var cateList = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var k = 0;
+var t=0.8;
 var Chart = null;
 
 var app = getApp()
 var thisYear;
+var w,h;
+
+// 初始化雷达图
+
+// function initRaderChart(canvas, width, height) {
+//   const chart = echarts.init(canvas, null, {
+//     width: width,
+//     height: height
+//   });
+//   canvas.setChart(chart);
+
+//   var option = {
+//     backgroundColor: "#ffffff",
+//     color: ["#37A2DA", "#FF9F7F"],
+//     tooltip: {},
+//     xAxis: {
+//       show: false
+//     },
+//     yAxis: {
+//       show: false
+//     },
+//     legend: {
+//       data: ['当月', '总平均'],
+//       top: 30,
+//       right: 25,
+//       backgroundColor: 'lightblue',
+//     },
+//     radar: {
+//       // shape: 'circle',
+//       indicator: [{
+//         name: '食品',
+//         max: t
+//       },
+//       {
+//         name: '日用品',
+//         max: t
+//       },
+//       {
+//         name: '服饰',
+//         max: t
+//       },
+//       {
+//         name: '玩具',
+//         max: t
+//       },
+//       {
+//         name: '保健品',
+//         max: t
+//       },
+//       {
+//         name: '书籍',
+//         max: t
+//       }
+//       ]
+//     },
+//     series: [{
+//       type: 'radar',
+//       data: [{
+//         value: [0.174, 0.14, 0.203, 0.621, 0.99, 0.162],
+//         name: '当月'
+//       },
+//       {
+//         value: raderdataListAVG[0],
+//         name: '总平均'
+//       }
+//       ]
+//     }]
+//   };
+
+//   chart.setOption(option);
+//   return chart;
+// }
+
 
 
 Page({
@@ -19,28 +101,53 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ec: {
+    currentTab: 0,
+    // date:'2016-09',
+    pickerMonth: '九',
+    pickerYear: '2016',
+    startDate: "2012-01-01",
+    endDate: "2012-01-01",
+    datePickerPath:"../images/datePicker.png",
+    ec1: {
       lazyLoad: true // 延迟加载
     },
-    canvasWidth:0,
-    canvasHeight:0,
+    ec2: {
+      lazyLoad: true, // 延迟加载
+      // onInit: initRaderChart
+    },
+    canvasWidth: 0,
+    canvasHeight: 0,
     year: 2012,
+    month:0,
     btnLeftPath: "../images/btnLeft.png",
     btnRightPath: '../images/btnRightDisabled.png'
+
+  },
+
+  intervalChange(e) {
+    if (e.detail['current']==0){
+      //重新绘制折线图
+      this.echartsComponnet = this.selectComponent('#userLineChart');
+      // this.linegetData(); //一开始绘制折线图
+      this.init_line_echarts();
+    } else{
+      //重新绘制雷达图
+      this.echartsComponnet = this.selectComponent('#userRaderChart');
+      this.init_rader_echarts();
+    }
 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.echartsComponnet = this.selectComponent('#userLineChart');
-    this.getData(); //获取数据
-
+    this.linegetData(); //一开始绘制折线图
     //获取当前时间戳  
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
-    //获取当前时间  
+    //获取当前时间 ，设置日期选择器的开始和结束日期
     var n = timestamp * 1000;
     var date = new Date(n);
     //年  
@@ -58,151 +165,303 @@ Page({
     var s = date.getSeconds();
 
     console.log("当前时间：" + Y + M + D + h + ":" + m + ":" + s);
+    console.log((Y - 5).toString() + "-01-01");
+    console.log(Y.toString() + "-12-01");
+
     this.setData({
-      year: Y
+      year: Y,
+      pickerYear: Y,
+      pickerMonth: parseInt(M.toString()),
+      startDate: (Y - 5).toString() + "-01-01",
+      endDate: Y.toString() + "-12-01",
     });
+
+    //发送请求获取当前时间的消费构成数据
 
   },
 
-  getData: function() {
+  bindDateChange(e) {
+
+    console.log('picker发送选择改变，携带值为', e.detail.value.substr(0, 4));
+
+    // var date = new Date(e.detail.value);     
+    this.setData({
+      date: e.detail.value,
+      pickerYear: parseInt(e.detail.value.substr(0, 4)),
+      pickerMonth: parseInt(e.detail.value.substr(5, 7))
+    })
+    // 向服务器发送请求获取数据
+
+    // 通过获取的数据重新绘制雷达图
+    this.echartsComponnet = this.selectComponent('#userRaderChart');
+    this.init_rader_echarts();
+  },
+
+  linegetData: function () {
     /**
      * 此处的操作：
      * 获取数据json
      */
     //如果是第一次绘制
     if (!Chart) {
-      this.init_echarts(); //初始化图表
+      this.init_line_echarts(); //初始化图表
     } else {
-      this.setOption(Chart); //更新数据
+      this.linesetOption(Chart); //更新数据
     }
-    /*  wx.request({
-        url: url, //仅为示例，并非真实的接口地址
-        data: data,
-        method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
-        success: (res) => {
-          dataList = res.data;
-          this.init_echarts();//初始化图表
-        }
-      });  */
   },
 
 
   //初始化图表
-  init_echarts: function() {
-    var that=this;
-
-    // 获取设备的长宽
-    let w, h;
+  init_line_echarts: function () {
+    var that = this;
+    //获取设备长和宽
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         w = res.windowWidth;
         h = res.windowHeight;
-
+        
         that.setData({
-          canvasWidth: w*0.9,
-          canvasHeight: h*0.7
-        });
-      },
+          canvasWidth: w,
+          canvasHeight: h * 0.57
+        })
+      }
     })
+
 
 
     this.echartsComponnet.init((canvas, width, height) => {
       // 初始化图表
       Chart = echarts.init(canvas, null, {
-        width: w*0.9,
-        height: h*0.65
+        width: w,
+        height: h * 0.65
       });
       // Chart.setOption(this.getOption());
-      this.setOption(Chart);
+      this.linesetOption(Chart);
       // 注意这里一定要返回 chart 实例，否则会影响事件处理等
       return Chart;
     });
   },
 
 
-  setOption: function(Chart) {
+  init_rader_echarts: function () {
+    var that = this;
+    //获取设备长和宽
+    wx.getSystemInfo({
+      success: function (res) {
+        w = res.windowWidth;
+        h = res.windowHeight;
+
+        // that.setData({
+        //   canvasWidth: w,
+        //   // canvasHeight: h * 0.57
+        //   canvasHeight: h
+        // })
+      }
+    })
+
+
+
+    this.echartsComponnet.init((canvas, width, height) => {
+      // 初始化图表
+      Chart = echarts.init(canvas, null, {
+        width: w,
+        height: h * 0.54
+        // height: h
+      });
+      // Chart.setOption(this.getOption());
+      this.radersetOption(Chart);
+      // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+      return Chart;
+    });
+  },
+
+  linesetOption: function (Chart) {
     Chart.clear(); // 清除
-    Chart.setOption(this.getOption()); //获取新数据
+    Chart.setOption(this.linegetOption()); //获取新数据
+  },
+
+  radersetOption: function (Chart) {
+    Chart.clear(); // 清除
+    Chart.setOption(this.radergetOption()); //获取新数据
   },
 
 
-  getOption: function() {
+  linegetOption: function () {
     // 指定图表的配置项和数据
     var option = {
       xAxis: {
         type: 'category',
         data: cateList,
+        boundaryGap: false,
+        axisLabel: {
+          fontSize: 11
+        }
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        axisLabel: {
+          fontSize: 11,
+          inside: true, //使标签值默认朝内，突出图像主体
+          rotate: 30,
+          color: function (value, index) {
+            return 'grey';
+          }
+
+        }
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['今年', '总平均'],
+        top: 30,
+        right: 50,
+        backgroundColor: 'lightblue',
+      },
+      grid: {
+        containLabel: true,
+        left: 30,
+        right: 30
       },
       series: [{
-          data: dataList,
-          type: 'line'
+        name: '今年',
+        type: 'line',
+        smooth: true,
+        data: linedataList[i]
+      }, {
+        name: '总平均',
+        type: 'line',
+        smooth: true,
+        data: linedataListAVG
+      }],
+    }
+    return option;
+  },
+
+  radergetOption: function () {
+    // 指定图表的配置项和数据
+    var option = {
+      backgroundColor: "#ffffff",
+      color: ["#37A2DA", "#FF9F7F"],
+      tooltip: {},
+      xAxis: {
+        show: false
+      },
+      yAxis: {
+        show: false
+      },
+      legend: {
+        data: ['当月', '总平均'],
+        top: 30,
+        right: 25,
+        backgroundColor: 'lightblue',
+      },
+      tooltip: {
+        show: false,
+        // trigger: 'axis'
+      },
+      radar: {
+        // shape: 'circle',
+        indicator: [{
+          name: '食品',
+          max: t
         },
         {
-          data: dataListAVG,
-          type: 'line'
+          name: '日用品',
+          max: t
+        },
+        {
+          name: '服饰',
+          max: t
+        },
+        {
+          name: '玩具',
+          max: t
+        },
+        {
+          name: '保健品',
+          max: t
+        },
+        {
+          name: '书籍',
+          max: t
         }
-      ]
-    }
+        ]
+      },
+      series: [{
+        type: 'radar',
+        data: [{
+          value: raderdataList[thisYear - this.data.pickerYear][this.data.pickerMonth-1],  
+          // value: [0.123, 0.435, 0.12, 0.257, 0.62, 0.45],
+          name: '当月'
+        },
+        {
+          value: raderdataListAVG[this.data.pickerMonth-1],
+          // value: [0.123, 0.435, 0.12, 0.257, 0.62, 0.45],
+          name: '总平均'
+        }
+        ]
+      }]
+    };
+
     return option;
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function () { },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
 
-  yearBtnLeft: function() {
-
-
-
-
+  yearBtnLeft: function () {
     // 设置仅能查看5年以内的消费记录
     if (this.data.year == thisYear - 5) {
       wx.showToast({
@@ -211,6 +470,10 @@ Page({
         duration: 2000
       })
     } else {
+      i++;
+
+      this.init_line_echarts(); //初始化图表
+
       if (this.data.year == thisYear - 4) {
         this.setData({
           year: this.data.year - 1,
@@ -239,11 +502,15 @@ Page({
 
   },
 
-  yearBtnRight: function() {
+  yearBtnRight: function () {
     if (this.data.year == thisYear) {
       // 无法查看未来的消费记录
 
     } else {
+      i--;
+
+      this.init_line_echarts(); //初始化图表
+
       if (this.data.year == thisYear - 1) {
         this.setData({
           btnRightPath: '../images/btnRightDisabled.png',

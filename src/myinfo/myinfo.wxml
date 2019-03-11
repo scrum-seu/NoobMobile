@@ -1,24 +1,54 @@
-<view class="container">
-  <view class="yearContainer">
-    <button class='btnLeft' bindtap='yearBtnLeft'>
-      <image class='btnLeftImg' src='{{btnLeftPath}}' mode='scaleToFill'></image>
-    </button>
-    <text class='yearText'>{{year}}</text>
-    <button class='btnRight' bindtap='yearBtnRight'>
-      <image class='btnRightImg' src='{{btnRightPath}}' mode='scaleToFill'></image>
-    </button>
-  </view>
+<swiper class="container" current="{{currentTab}}" duration="300" indicator-dots="true" bindchange="intervalChange">
 
 
-  <view class="superChartContainer">
-    <text class="chartCaption">{{year}}年消费总额变化情况</text>
-
-    <view class="lineChartContainer" style='width:{{canvasWidth}}px; height:{{canvasHeight}}px'>
-      <ec-canvas  id="userLineChart" canvas-id="userChart-Line" ec="{{ ec }}"></ec-canvas>
+  <swiper-item>
+    <view class="yearContainer">
+      <button class='btnLeft' bindtap='yearBtnLeft'>
+        <image class='btnLeftImg' src='{{btnLeftPath}}' mode='scaleToFill'></image>
+      </button>
+      <text class='yearText'>{{year}}</text>
+      <button class='btnRight' bindtap='yearBtnRight'>
+        <image class='btnRightImg' src='{{btnRightPath}}' mode='scaleToFill'></image>
+      </button>
     </view>
 
-  </view>
+
+    <view class="superChartContainer">
+      <text class="chartCaption">{{year}}年消费总额变化情况</text>
+
+      <view class="lineChartContainer" style='width:{{canvasWidth}}px; height:{{canvasHeight}}px'>
+        <ec-canvas id="userLineChart" canvas-id="userChart-Line" ec="{{ ec1 }}"></ec-canvas>
+      </view>
+      <text class="bottomCaption">橙色为用户当月，蓝色为，展示了您每个月的消费变化情况，您可以点击右上角的图例与平均消费金额进行比对。</text>
+    </view>
+  </swiper-item>
+
+
+  <swiper-item>
+    <view class="monthChooseContainer">
+      <picker mode="date" value="{{date}}" fields="month" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange" class="pickerContainer">
+        <view class="captionContainer">
+          <text class="dateCaption">{{pickerYear}} 年 {{pickerMonth}} 月</text>
+          <image class='datePickerImg' src='{{datePickerPath}}' mode='scaleToFill'></image>
+        </view>
+      </picker>
+
+
+    </view>
+
+    <view class="superChartContainer">
+      <text class="chartCaption">{{pickerYear}}年{{pickerMonth}}月购物类别构成情况</text>
+
+      <view class="raderChartContainer" style='width:{{canvasWidth}}px; height:{{canvasHeight}}px'>
+        <ec-canvas id="userRaderChart" canvas-id="userChart-Rader" ec="{{ ec2 }}"></ec-canvas>
+      </view>
+      <text class="bottomCaption">将Noob商店的商品分类为6类，雷达图展示了您当月(橙色)和在每年该月时(蓝色)的消费构成。</text>
+    </view>
+
+
+  </swiper-item>
 
 
 
-</view>
+
+</swiper>
