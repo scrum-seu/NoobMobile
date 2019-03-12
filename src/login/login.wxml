@@ -27,7 +27,7 @@
     </checkbox-group>
 
     <view class='btn_block'>
-      <button class='btn' bindtap='fill_info' disabled="{{ifFillDisable}}">完善信息</button>
+      <!-- <button class='btn' bindtap='fill_info' disabled="{{ifFillDisable}}">完善信息</button> -->
       <button class='btn' bindtap='showCam' disabled="{{ifLoginDisable}}">{{btnText}}</button>
     </view>
 
