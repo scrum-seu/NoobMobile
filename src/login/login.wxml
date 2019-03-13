@@ -13,8 +13,8 @@
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       </block> -->
-      <image class="facePic" mode="aspectFit" src="{{userInfo.imageUrl}}" background-size="cover"></image>
-      <text class="userinfo-msg">{{userInfo.msg}}</text>
+      <image class="facePic" mode="aspectFit" src="{{userRealInfo.imageUrl}}" background-size="cover"></image>
+      <text class="userinfo-msg">{{userRealInfo.msg}}</text>
       <!-- class="userinfo-msg" 未设置样式 -->
       <!-- <button class='btn' bindtap="showCam">人脸拍照</button> -->
     </view>
@@ -28,7 +28,7 @@
 
     <view class='btn_block'>
       <!-- <button class='btn' bindtap='fill_info' disabled="{{ifFillDisable}}">完善信息</button> -->
-      <button class='btn' bindtap='showCam' disabled="{{ifLoginDisable}}">{{btnText}}</button>
+      <button class='btn' disabled="{{ifLoginDisable}}" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"  bindgetuserinfo="getUserInfo" >{{btnText}}</button>
     </view>
 
     <view class='copyright'>

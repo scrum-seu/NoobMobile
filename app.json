@@ -35,8 +35,8 @@
       {
         "pagePath": "src/me/me",
         "text": "我的",
-        "iconPath": "src/images/history-unselected.png",
-        "selectedIconPath": "src/images/history-selected.png"
+        "iconPath": "src/images/history_unselected.png",
+        "selectedIconPath": "src/images/history_selected.png"
       }
     ]
   }

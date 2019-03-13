@@ -8,49 +8,74 @@ var new_face = "";
 
 Page({
   data: {
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     motto: 'Welcome to Noob',
     ifLoginDisable: true,
     ifFillDisable: true,
     ifCheckDisable: false,
     btnText: '识别',
-    userInfo: {
+    userRealInfo: {
       imageUrl: '../images/face_pic.png',
       msg: "请识别脸部！"
     },
-    hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
   },
 
-  // //事件处理函数
-  // bindViewTap: function () {
-  //   wx.navigateTo({
-  //     url: '../logs/logs'
-  //   })
+  // // 完善信息按钮函数
+  // fill_info: function () {
+  //   //判断用户是否已经扫描
+  //   if (bool_detected == 1) {
+  //     wx.showToast({
+  //       title: '请完善/修改个人信息',
+  //       icon: 'none',
+  //       duration: 4000
+  //     })
+  //   } else {
+  //     wx.showToast({
+  //       title: '请先识别脸部',
+  //       icon: 'none',
+  //       duration: 4000
+  //     })
+  //   }
   // },
-
-  // 完善信息按钮函数
-  fill_info: function () {
-    //判断用户是否已经扫描
-    if (bool_detected == 1) {
-      wx.showToast({
-        title: '请完善/修改个人信息',
-        icon: 'none',
-        duration: 4000
-      })
-    } else {
-      wx.showToast({
-        title: '请先识别脸部',
-        icon: 'none',
-        duration: 4000
-      })
-    }
-
-  },
 
   //显示用户协议方法
   showAgreement: function () {
+    wx.showToast({
+      title: '显示用户协议',
+      icon: 'none',
+      duration: 4000
+    })
+  },
 
+  getUserInfo: function (e) {
+    console.log(e.detail.errMsg);
+    //如果已经识别了人脸则点击登录进行跳转
+    if(bool_detected==1){
+      wx.switchTab({
+        url: '/src/recommend/recommend'
+      })
+    }
+
+
+    // 判断用户是否同意授权
+    if (e.detail.errMsg == 'getUserInfo:fail auth deny'){
+      // 用户同意了再进行人脸识别
+    
+      wx.showToast({
+        title: '请进行微信授权！',
+        icon: 'none',
+        duration: 4000
+      })
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        hasUserInfo: false
+      })
+    }else{
+      this.showCam();
+    }
   },
 
   //同意用户协议方法
@@ -66,14 +91,14 @@ Page({
     }
   },
 
+
+
   //拍照上传函数
   showCam: function () {
     var that = this
     if (bool_detected == 1) {
-      // 已经检测过人脸，点击直接跳转
-      wx.switchTab({
-        url: '/src/recommend/recommend'
-      })
+      // 已经检测过人脸并且获取了微信权限，点击直接跳转  
+
     } else {
       wx.chooseImage({
         count: 1, // 最多可以选择的图片张数，默认9
@@ -81,9 +106,9 @@ Page({
         success: function (res) {
           //console.log(res);
           var tempFilePaths = res.tempFilePaths // 图片的本地临时文件路径列表
-          app.globalData.userImage = tempFilePaths[0];//-------------------------
+          // app.globalData.userImage = tempFilePaths[0];//-------------------------
           that.setData({
-            userInfo: {
+            userRealInfo: {
               //填充人脸识别界面的图片
               imageUrl: tempFilePaths[0],
               msg: '人脸识别中...'
@@ -103,8 +128,8 @@ Page({
             filePath: tempFilePaths[0],
             name: 'image_file',
             formData: {
-              'api_key': 'OkAAoB2HTiLUH4q6qihRj-X5SUBgYx9R',
-              'api_secret': 'DMMBpG5ADtNaSXAYGdcpEcYqHnJprVTH',
+              'api_key': 'OCfvZCSf72p8WPptTdW_nv2rwQa10i_x',
+              'api_secret': 'TATBECgI3LMRuPVLLB15GtTvpqc3pbOY',
               'return_attributes': "gender,age,ethnicity,beauty,skinstatus"
             },
             success: function (res) {
@@ -115,7 +140,7 @@ Page({
               if (data.faces.length == 0) {
                 // console.log("执行到这")
                 that.setData({
-                  userInfo: {
+                  userRealInfo: {
                     //填充人脸识别界面的图片
                     imageUrl: tempFilePaths[0],
                     msg: '未检测到人脸!请重新拍摄！'
@@ -141,10 +166,10 @@ Page({
                 wx.request({
                   url: "https://api-cn.faceplusplus.com/facepp/v3/search", //仅为示例，并非真实的接口地址
                   data: {
-                    'api_key': 'OkAAoB2HTiLUH4q6qihRj-X5SUBgYx9R',
-                    'api_secret': 'DMMBpG5ADtNaSXAYGdcpEcYqHnJprVTH',
+                    'api_key': 'OCfvZCSf72p8WPptTdW_nv2rwQa10i_x',
+                    'api_secret': 'TATBECgI3LMRuPVLLB15GtTvpqc3pbOY',
                     "face_token": face_token,
-                    "faceset_token": "68e72c734e103509a0928584bcdccdc2"
+                    "faceset_token": "a95b184fd0011a44b3c18d553ff677f5"
                   },
                   dataType: "json",
                   header: {
@@ -166,14 +191,14 @@ Page({
                       var face_token_new = data1.results[0].face_token;
                       console.log("最新的" + face_token_new);
 
-                      if (face_token_new == '6808682089dbbb443be215ead1653ad5') {
+                      if (face_token_new == '2a1904c4c99dfaa37b0ea51aa975fcd9') {
                         // //更新人脸检测数据
                         // app.globalData.username = names[face_token_new];
                         // //发送短信
                         // var returnMsg = util.sendMsg(names[face_token_new], "18810388284");
                         //刷新页面
                         that.setData({
-                          userInfo: {
+                          userRealInfo: {
                             imageUrl: tempFilePaths[0],
                             msg: '欢迎回来，叶帅'
                           }
@@ -198,7 +223,7 @@ Page({
                       // var returnMsg = util.sendMsg("您", "18810388284");
                       //刷新页面
                       that.setData({
-                        userInfo: {
+                        userRealInfo: {
                           imageUrl: tempFilePaths[0],
                           //tips: '一位' + data.faces[0].attributes.age.value + '岁的' + genders[data.faces[0].attributes.gender.value]
                           msg: '未搜索到匹配人脸\n新用户，欢迎您'
@@ -222,6 +247,10 @@ Page({
 
 
                 })
+              // 获取微信授权保存头像和信息
+              
+
+
 
               }
 
@@ -231,48 +260,8 @@ Page({
         },
       })
     }
-
-
-
   },
 
-  // onLoad: function () {
-  //   if (app.globalData.userInfo) {
-  //     this.setData({
-  //       userInfo: app.globalData.userInfo,
-  //       hasUserInfo: true
-  //     })
-  //   } else if (this.data.canIUse) {
-  //     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-  //     // 所以此处加入 callback 以防止这种情况
-  //     app.userInfoReadyCallback = res => {
-  //       this.setData({
-  //         userInfo: res.userInfo,
-  //         hasUserInfo: true
-  //       })
-  //     }
-  //   } else {
-  //     // 在没有 open-type=getUserInfo 版本的兼容处理
-  //     wx.getUserInfo({
-  //       success: res => {
-  //         app.globalData.userInfo = res.userInfo
-  //         this.setData({
-  //           userInfo: res.userInfo,
-  //           hasUserInfo: true
-  //         })
-  //       }
-  //     })
-  //   }
-  // },
-
-  getUserInfo: function (e) {
-    // console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
 
   // 同意用户协议
   showAgreement: function () {
