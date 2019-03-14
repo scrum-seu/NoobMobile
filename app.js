@@ -40,7 +40,7 @@ App({
 
   globalData: {
     userInfo: null,
-    user_id: 3
+    user_id: 4
     // 登陆之后user_id用于保存检测到用户的id
   },
 

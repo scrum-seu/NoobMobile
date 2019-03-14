@@ -1,20 +1,7 @@
 {
   "pages": [
-<<<<<<< HEAD
-    "src/myinfo/myinfo",
-    "src/recommend/recommend",
+    "src/me/me",
     "src/login/login",
-    "src/me/me"
-=======
-        "src/me/me",
-    "src/login/login",
-
-    
-    
-    
->>>>>>> 106d45b7924b8262a2cb2e7173def41222154ad5
-    
-    
     "src/recommend/recommend",
     "src/myinfo/myinfo",
     "src/history/history"
