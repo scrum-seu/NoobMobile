@@ -1,2 +1,55 @@
 <!--src/me/me.wxml-->
-<text>src/me/me.wxml</text>
+<view class="headContainer">
+  <image mode="aspectFit" src="{{userInfo.avatarUrl}}" background-size="cover" class="facePic"></image>
+
+  <view class="userinfoContainer">
+    <text class='useridTitle'>微信id:          {{userInfo.nickName}}</text>
+    <text class='userinfoTitle'>您是Noob商城的第 <text class="useridStyle">{{user_id}}</text> 位顾客</text>
+  </view>
+
+
+
+
+</view>
+
+
+<view class="countContainer">
+  <text class="spendCaption">消费成就</text>
+  <view class="achContainer">
+    <view class="capContainer1">
+      <image mode="aspectFit" src="../images/days.png" class="capPic"></image>
+      <text class="normal_top">相遇</text>
+      <text class="count">{{days}}</text>
+      <text class="normal">天</text>
+    </view>
+
+    <view class="capContainer2">
+      <image mode="aspectFit" src="../images/goods.png" class="capPic"></image>
+      <text class="normal_top">购物</text>
+      <text class="count">{{times}}</text>
+      <text class="normal">次</text>
+    </view>
+
+    <view class="capContainer3">
+      <image mode="aspectFit" src="../images/shopping.png" class="capPic"></image>
+      <text class="normal_top">消费</text>
+      <text class="count">{{money}}</text>
+      <text class="normal">元</text>
+    </view>
+  </view>
+</view>
+
+<view class="spendHistoryContainer" hover-class='containerPressed' bindtap='showShoppingHistory'>
+  <text class="historyCaption">查看购物记录</text>
+  <image mode="aspectFit" src="../images/rightArrow.png" class="arrowPic"></image>
+</view>
+
+<view class="userInformationContainer" hover-class='containerPressed' bindtap='showUserInfo'>
+  <text class="informationCaption">完善个人信息</text>
+  <image mode="aspectFit" src="../images/rightArrow.png" class="arrowPic"></image>
+</view>
+
+<view class="buttonContainer">
+<button class="logOutButton"  hover-class='logOutButtonPressed' bindtap='logoutConfirm'>退出登录</button>
+
+</view>

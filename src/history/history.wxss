@@ -1,0 +1,166 @@
+/* src/history/history.wxss */
+
+page {
+  background-color: #f3f3f3;
+}
+
+.super {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monthChooseContainer {
+  width: 100%;
+  height: 150rpx;
+  background-color: #c8dfe7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+  position: fixed;
+  /* margin-top: 0rpx;  */
+}
+
+.captionContainer {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; *//* justify-content: center; */
+  width: 700rpx;
+  /* justify-content: space-between; */
+}
+
+.pickerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.dateCaption {
+  /* align-content: center;
+  align-items: center;
+  align-self: center; */
+  margin: auto;
+}
+
+.datePickerImg {
+  width: 35px;
+  height: 35px;
+  margin-left: -68rpx;
+  /* margin-left: 100rpx; */
+}
+
+.tableContainer {
+  margin-top: 150rpx;
+  /* border: 0px solid darkgray; */
+  background-color: #f0fbff;
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.tr {
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  height: 3rem;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.td {
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.td-time {
+  width: 25%;
+  justify-content: center;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.td-name {
+  width: 35%;
+  justify-content: center;
+  text-align: center;
+  font-size: 23rpx;
+}
+
+.td-num {
+  width: 15%;
+  justify-content: center;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.td-count {
+  width: 25%;
+  justify-content: center;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+
+.bg-w {
+  background: snow;
+}
+
+.bg-g {
+  background: #e6f3f9;
+  /* justify-content: space-between;  */
+}
+
+
+
+.th1 {
+  font-size: 29rpx;
+  width: 25%;
+  justify-content: center;
+  background: rgb(86, 126, 247);
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+
+.th2 {
+  width: 35%;
+  font-size: 29rpx;
+  justify-content: center;
+  background: rgb(86, 126, 247);
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+
+.th3 {
+  width: 15%;
+  font-size: 29rpx;
+  justify-content: center;
+  background: rgb(86, 126, 247);
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+
+.th4 {
+  width: 25%;
+  font-size: 29rpx;
+  justify-content: center;
+  background: rgb(86, 126, 247);
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
