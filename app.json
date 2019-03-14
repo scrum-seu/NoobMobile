@@ -1,11 +1,23 @@
 {
   "pages": [
+<<<<<<< HEAD
     "src/myinfo/myinfo",
     "src/recommend/recommend",
     "src/login/login",
     "src/me/me"
+=======
+        "src/me/me",
+    "src/login/login",
+
     
     
+    
+>>>>>>> 106d45b7924b8262a2cb2e7173def41222154ad5
+    
+    
+    "src/recommend/recommend",
+    "src/myinfo/myinfo",
+    "src/history/history"
   ],
   "window": {
     "navigationBarBackgroundColor": "#c8dfe7",
@@ -28,15 +40,15 @@
       },
       {
         "pagePath": "src/myinfo/myinfo",
-        "text": "历史",
-        "iconPath": "src/images/user-unselected.png",
-        "selectedIconPath": "src/images/user-selected.png"
+        "text": "统计",
+        "iconPath": "src/images/history_unselected.png",
+        "selectedIconPath": "src/images/history_selected.png"
       },
       {
         "pagePath": "src/me/me",
         "text": "我的",
-        "iconPath": "src/images/history_unselected.png",
-        "selectedIconPath": "src/images/history_selected.png"
+        "iconPath": "src/images/user-unselected.png",
+        "selectedIconPath": "src/images/user-selected.png"
       }
     ]
   }
