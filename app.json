@@ -1,10 +1,11 @@
 {
   "pages": [
-        "src/login/login",
-            "src/recommend/recommend",
+    "src/login/login",
+    "src/me/me",
+    
+    "src/recommend/recommend",
     "src/myinfo/myinfo"
-
-
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#c8dfe7",
@@ -27,9 +28,15 @@
       },
       {
         "pagePath": "src/myinfo/myinfo",
-        "text": "我的",
+        "text": "历史",
         "iconPath": "src/images/user-unselected.png",
         "selectedIconPath": "src/images/user-selected.png"
+      },
+      {
+        "pagePath": "src/me/me",
+        "text": "我的",
+        "iconPath": "src/images/history_unselected.png",
+        "selectedIconPath": "src/images/history_selected.png"
       }
     ]
   }

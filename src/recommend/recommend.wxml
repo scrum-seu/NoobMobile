@@ -1,12 +1,21 @@
+<view class="yearContainer">
+  <text class='recommendTitle'>猜你喜欢</text>
+</view>
+
 <scroll-view class="scroll-view_H" scroll-x scroll-with-animation style="width: 100%;height:{{windowHeight}}px" bindscroll="getSelectItem">
-  <block wx:for="{{proList}}"  wx:key="unique" wx:for-index="id" wx:for-item="item">
+
+
+
+  <block wx:for="{{proList}}" wx:key="unique" wx:for-index="id" wx:for-item="item">
     <view class="scroll_item {{item.selected ? 'selected' : ''}}" data-index='{{item.index}}' bindtap='selectProItem'>
-      <view class='proImg'><image src="{{item.proUrl}}" class="slide-image"  mode="widthFix"/></view>
+      <view class='proImg'>
+        <image src="{{item.proUrl}}" class="slide-image" mode="widthFix" />
+      </view>
       <view class='detailBox'>
         <view class='proTitle'>{{item.proTitle}}</view>
         <view class='proDec'>{{item.proDec}}</view>
         <view class='proPrice'>￥{{item.proPrice}}</view>
- <!-- 9             <navigator class='detailLink'  url="../detail/detail?id={{item.id}}">查看详情 ></navigator> -->
+        <!-- 9             <navigator class='detailLink'  url="../detail/detail?id={{item.id}}">查看详情 ></navigator> -->
       </view>
     </view>
   </block>
