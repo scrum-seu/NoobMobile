@@ -1,6 +1,8 @@
 //获取应用实例
 const app = getApp()
 
+var url_prefix = "https://github.com/scrum-seu/Noob/tree/dev/goods_image/"
+var url_suffix = ".jpg?raw=true"
 
 Page({
   /**
@@ -11,35 +13,67 @@ Page({
     nickname: "ren",
     gender: 0,
     proList: [
-      {
-        proUrl: "https://github.com/scrum-seu/NoobMobile/blob/master/src/images/home_ico.jpg?raw=true",
-        proTitle: "麦糯糯浓醇巧克力味蛋糕卷",
-        proDec: "麦糯糯浓醇巧克力味蛋糕卷",
-        proPrice: "26.80",
-      },
-      {
-        proUrl: "https://github.com/scrum-seu/NoobMobile/blob/master/src/images/plus_ico.png?raw=true",
-        proTitle: "巧克力味蛋糕卷",
-        proDec: "巧克力味蛋糕卷",
-        proPrice: "6.80",
-      },
-      {
-        proUrl: "https://github.com/andelf/fuck12306/blob/master/screenshots/pic1.jpg?raw=true",
-        proTitle: "巧克力",
-        proDec: "巧克力",
-        proPrice: "3.80",
-      }
+      // {
+      //   proUrl: "https://github.com/scrum-seu/NoobMobile/blob/master/src/images/home_ico.jpg?raw=true",
+      //   proTitle: "麦糯糯浓醇巧克力味蛋糕卷",
+      //   proDec: "麦糯糯浓醇巧克力味蛋糕卷",
+      //   proPrice: "26.80",
+      // },
+      // {
+      //   proUrl: "https://github.com/scrum-seu/NoobMobile/blob/master/src/images/plus_ico.png?raw=true",
+      //   proTitle: "巧克力味蛋糕卷",
+      //   proDec: "巧克力味蛋糕卷",
+      //   proPrice: "6.80",
+      // },
+      // {
+      //   proUrl: "https://github.com/andelf/fuck12306/blob/master/screenshots/pic1.jpg?raw=true",
+      //   proTitle: "巧克力",
+      //   proDec: "巧克力",
+      //   proPrice: "3.80",
+      // }
     ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  // onLoad: function (options) {
-  //   // console.log(app.globalData.userinfo)
-  //   var userinfo = JSON.parse(app.globalData.userinfo)
-  //   this.setData({ nickname: userinfo["name"], gender: userinfo["gender"] })
-  // },
+  onLoad: function (options) {
+    var that = this;
+    wx:wx.request({
+      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/recommend',
+      data: {
+        user_id: app.globalData.user_id
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        // console.log(res.data["recommends"])
+        var data_list = res.data["recommends"]
+        var res_list = []
+        for (var i = 0; i <data_list.length; ++i)
+        {
+          var temp_dict = {}
+          temp_dict["proUrl"] = url_prefix + data_list[i]["good_id"] + url_suffix
+          console.log(temp_dict["proUrl"])
+          temp_dict["proTitle"] = data_list[i]["name"]
+          temp_dict["proDec"] = data_list[i]["name"]
+          temp_dict["proPrice"] = data_list[i]["price"]
+          res_list.push(temp_dict)
+        }
+        that.setData({
+          proList: res_list,
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {
+
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -103,7 +137,7 @@ Page({
     that.data.proList[curIndex].selected = true
     that.setData({
       proList: that.data.proList,
-      giftNo: this.data.proList[curIndex].id
+      // giftNo: this.data.proList[curIndex].id
     })
   },
 

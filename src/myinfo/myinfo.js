@@ -244,7 +244,7 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         var req_data = res.data
         var temp_raderdataList = []
         var max = 0  // 记录最大值，进行自适应改变max_scale显示规模
