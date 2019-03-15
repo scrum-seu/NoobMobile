@@ -72,6 +72,17 @@ page {
   justify-content: space-between; 
 }
 
+.trs {
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  height: 2rem;
+  align-items: center;
+  justify-content: space-between; 
+}
+
 .td {
   width: 40%;
   justify-content: center;
@@ -123,44 +134,48 @@ page {
 
 .th1 {
   font-size: 29rpx;
+  font-weight: bold;
   width: 25%;
   justify-content: center;
   background: rgb(86, 126, 247);
   color: #fff;
   display: flex;
-  height: 3rem;
+  height: 2rem;
   align-items: center;
 }
 
 .th2 {
+  font-weight: bold;
   width: 35%;
   font-size: 29rpx;
   justify-content: center;
   background: rgb(86, 126, 247);
   color: #fff;
   display: flex;
-  height: 3rem;
+  height: 2rem;
   align-items: center;
 }
 
 .th3 {
   width: 15%;
+  font-weight: bold;
   font-size: 29rpx;
   justify-content: center;
   background: rgb(86, 126, 247);
   color: #fff;
   display: flex;
-  height: 3rem;
+  height: 2rem;
   align-items: center;
 }
 
 .th4 {
   width: 25%;
+  font-weight: bold;
   font-size: 29rpx;
   justify-content: center;
   background: rgb(86, 126, 247);
   color: #fff;
   display: flex;
-  height: 3rem;
+  height: 2rem;
   align-items: center;
 }
