@@ -1,0 +1,195 @@
+// 完善信息
+var app = getApp()
+
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    show: false,  //控制下拉列表的显示隐藏，false隐藏、true显示
+    selectData: [
+      "教师",
+      "IT",
+      "医疗",
+      "销售",
+    ],  //下拉列表的数据
+    // index: 0,  //选择的下拉列表下标
+    userInfo: {},
+    name: app.globalData.name,
+    age: app.globalData.age,
+    phone: app.globalData.phone,
+    occupation: app.globalData.occupation,
+
+    verified_name: null,
+    verified_age: null,
+    verified_phone: null,
+
+    name_judge: false,
+    age_judeg: false,
+    phone_judge: false,
+  },
+
+  /**
+   * name获取
+   */
+  listenName: function(e){
+    var tmp_name = e.detail.value
+    if (tmp_name == null || tmp_name == "")
+    {
+      this.setData({
+        verified_name: "名字不能为空，请重新输入！"
+      })
+    }
+    else
+    {
+      this.setData({
+        verified_name: null,
+        name: tmp_name,
+        name_judge: true,
+      })
+    }
+  },
+
+
+  /**
+   * age获取
+   */
+  listenAge: function (e) {
+    var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
+    var tmp_age = e.detail.value
+    if (!re.test(tmp_age) || tmp_age < 1 || tmp_age > 120) {
+      this.setData({
+        verified_age: "年龄输入不正确，请重新输入！"
+      })
+    }
+    else {
+      this.setData({
+        verified_age: null,
+        age: tmp_age,
+        age_judge: true,
+      })
+    }
+  },
+
+
+  /**
+  * phone获取
+  */
+  listenPhone: function (e) {
+    var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
+    var tmp_phone = e.detail.value
+    if (!re.test(tmp_phone)) {
+      this.setData({
+        verified_phone: "手机号输入不正确，请重新输入！"
+      })
+    }
+    else {
+      this.setData({
+        verified_phone: null,
+        phone: tmp_phone,
+        phone_judge: true,
+      })
+    }
+  },
+
+
+  // 点击下拉显示框
+  selectTap() {
+    this.setData({
+      show: !this.data.show
+    });
+  },
+
+  // 点击下拉列表
+  optionTap(e) {
+    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
+    this.setData({
+      occupation: this.data.selectData[Index],
+      show: !this.data.show
+    });
+  },
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // //获取微信头像
+    // // app.globalData.userInfo;
+    // var that = this;
+    // wx.getUserInfo({
+    //   success(res) {
+    //     // console.log(res.userInfo)
+    //     that.setData({
+    //       userInfo: {
+    //         avatarUrl: res.userInfo.avatarUrl,
+    //         nickName: res.userInfo.nickName
+    //       }
+    //     })
+    //   }
+    // })
+
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    
+  },
+
+   /**
+   * 提交完善信息
+   */
+  logoutConfirm: function(){
+
+  }
+})

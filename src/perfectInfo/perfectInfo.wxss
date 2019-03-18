@@ -1,0 +1,173 @@
+page{
+  background-color:#c8dfe7;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* .headContainer {
+  width: 100%;
+  height: 400rpx;
+  background-color: #c8dfe7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+} */
+
+/* .facePic { */
+  /* width: 200rpx; */
+  /* height: 200rpx; */
+  /* margin: 50rpx; */
+  /* margin-bottom: 100rpx; */
+  /* border-radius: 100%;
+  margin-left: 8%; */
+/* } */
+/* 
+.Title{
+  font-size: 40rpx;
+  font-family: Microsoft YaHei;
+  text-shadow: 3px 3px 0px #b9b9b9;
+} */
+
+.info{
+  margin: 10rpx;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.split{
+  margin: 60rpx;
+  height: 5rpx;
+  width: 100%;
+  border-top: solid 3rpx;
+  border-top-color: #10526670;
+}
+
+.tips{
+  font-size: 33rpx;
+  margin: 10rpx;
+  color: #10526670;
+}
+
+.item{
+  margin: 20rpx;
+  width: 80%;
+  height: 80rpx;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #10526670;
+  border-width: 1rpx, 1rpx, 1rpx, 1rpx;
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  align-content: space-between;
+}
+
+.itemIcon{
+  width: 20%;
+  height: 70%;
+}
+
+.input{
+  width: 50%;
+  height: 100%;
+  font-size: 33rpx;
+  margin-left: 30rpx;
+}
+
+.correct{
+  width: 10%;
+  height: 100%;
+
+}
+
+.select_box{
+  width: 60%;
+  margin: 30rpx auto;
+  position: relative;
+}
+
+.select{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.select_text{
+  font-size: 33rpx;
+  flex: 1;
+  margin-left: -40rpx;
+}
+
+.select_img{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  transition:transform 0.3s;
+}
+
+.select_img_rotate{
+  transform:rotate(180deg); 
+}
+
+.option_box{
+  position: absolute;
+  top: 70rpx;
+  width: 100%;
+  box-sizing: border-box;
+  height: 0;
+  overflow-y: auto;
+  border-top: 0;
+  transition: height 0.3s;
+}
+
+.option{
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  padding: 2rpx;
+}
+
+.verified_info{
+  height: 30rpx;
+  width: 80%;
+  font-size: 25rpx;
+  text-align: center;
+}
+
+.buttonContainer{
+  /* height: 200rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logOutButton{
+  background-color: #10526670;
+  color: #ffffff;
+  font-size: 40rpx;
+  font-weight: bold;
+  border: 0;
+  margin-top: 50rpx;
+  width: 310rpx;
+  border-radius: 98rpx; 
+}
+
+.logOutButtonPressed{
+  background-color: #cc0101;
+  color: #ffffff;
+  font-size: 40rpx;
+  font-weight: bold;
+  border: 0;
+  margin-top: 50rpx;
+  width: 310rpx;
+  border-radius: 98rpx; 
+}

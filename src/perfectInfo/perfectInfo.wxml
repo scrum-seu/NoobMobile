@@ -1,0 +1,58 @@
+<!--src/perfectInfo/perfectInfo.wxml-->
+<!-- <view class="headContainer">
+  <image mode="aspectFit" src="{{userInfo.avatarUrl}}" background-size="cover" class="facePic"></image>
+
+  <view class="userinfoContainer">
+    <text class='Title'>{{userInfo.nickName}}</text>
+  </view>
+</view> -->
+
+<view class='info'>
+  <text class='tips'>请完善信息！</text>
+  <view class="item">
+    <image src="../images/perfectInfo_name.png" class="itemIcon" mode='aspectFit'></image>
+    <input placeholder='{{name?name:"请输入姓名"}}' class='input' bindblur='listenName'></input>
+    <block wx:if="{{name_judge}}">
+      <image src='../images/perfectInfo_correct.png' class='correct' mode='aspectFit'></image>
+    </block>
+  </view>
+  <view class='verified_info'>{{verified_name?verified_name: ""}}</view>
+
+  <view class="item">
+    <image src="../images/perfectInfo_age.png" class="itemIcon" mode='aspectFit'></image>
+    <input placeholder='{{age?age:"请输入年龄"}}' class='input' bindblur='listenAge' type='number'></input>
+    <block wx:if="{{age_judge}}">
+      <image src='../images/perfectInfo_correct.png' class='correct' mode='aspectFit'></image>
+    </block>
+  </view>
+  <view class='verified_info'>{{verified_age?verified_age: ""}}</view>
+
+  <view class="item">
+    <image src='../images/perfectInfo_phone_num.png' class='itemIcon' mode='aspectFit'></image>
+    <input placeholder='{{phone?phone:"请输入手机号"}}' class='input' maxlength='11' bindblur='listenPhone' type='number'></input>
+    <block wx:if="{{phone_judge}}">
+      <image src='../images/perfectInfo_correct.png' class='correct' mode='aspectFit'></image>
+    </block>
+  </view>
+  <view class='verified_info'>{{verified_phone?verified_phone: ""}}</view>
+
+  <!-- <view class='split'></view> -->
+  <view class="item">
+    <image src="../images/perfectInfo_occupation.png" class='itemIcon' mode='aspectFit'></image>
+    <view class='select_box'>
+      <view class='select' catchtap='selectTap'>
+        <text class='select_text'>{{occupation?occupation:"请选择职业"}}</text>
+        <image class='select_img {{show&&"select_img_rotate"}}' src='../images/perfectInfo_down.png'></image>         
+      </view>
+      <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
+        <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}
+      </text>
+      </view>
+    </view>
+  </view>  
+</view>
+
+<view class='split'></view>
+<view class="buttonContainer">
+  <button class="logOutButton"  hover-class='logOutButtonPressed' bindtap='logoutConfirm'>提交信息</button>
+</view>
