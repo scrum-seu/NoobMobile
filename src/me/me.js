@@ -1,12 +1,16 @@
 // src/me/me.js
+
+
+
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    user_id: app.globalData.user_id,
     userInfo: {},
-    user_id: "10",
     //分别为天数，次数，和金额
     days: 256,
     times: 13,
@@ -33,6 +37,44 @@ Page({
     })
 
     //获取用户购物信息
+    this.usergetData();
+  },
+
+  usergetData: function () {
+    /**
+     * 此处的操作：
+     * 获取数据json
+     */
+    var t = this;
+    wx: wx.request({
+      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_general_consumption_info',
+      data: {
+        user_id: this.data.user_id,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        // console.log(res.data)
+        var req_data = res.data
+        t.setData({
+          days: req_data['days'],
+          times: req_data['times'],
+          money:req_data['money']
+        })
+
+      },
+      fail: function (res) {
+        console.log(res.data)
+      },
+      // complete: function(res) {},
+    })
+
+
+
   },
 
   logoutConfirm: function() {

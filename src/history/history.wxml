@@ -1,35 +1,35 @@
 <!--src/history/history.wxml-->
 <view class="super">
-<view class="monthChooseContainer">
-  <picker mode="date" value="{{date}}" fields="month" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange" class="pickerContainer">
-    <view class="captionContainer">
-      <text class="dateCaption">{{pickerYear}} 年 {{pickerMonth}} 月</text>
-      <image class='datePickerImg' src='{{datePickerPath}}' mode='scaleToFill'></image>
-    </view>
-  </picker>
-</view>
-
-<view class="tableContainer">
-  <view class="tr bg-w">
-    <view class="th1">时间</view>
-    <view class="th2">商品</view>
-    <view class="th3">数量</view>
-    <view class="th4">总额</view>
+  <view class="monthChooseContainer">
+    <picker mode="date" value="{{date}}" fields="month" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange" class="pickerContainer">
+      <view class="captionContainer">
+        <text class="dateCaption">{{pickerYear}} 年 {{pickerMonth}} 月</text>
+        <image class='datePickerImg' src='{{datePickerPath}}' mode='scaleToFill'></image>
+      </view>
+    </picker>
   </view>
-  <block wx:for="{{listData}}" wx:key="{{code}}">
-    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-      <view class="td-time">{{item.time}}</view>
-      <view class="td-name">{{item.name}}</view>
-      <view class="td-num">{{item.num}}</view>
-      <view class="td-count">{{item.count}}</view>
+
+  <view class="tableContainer">
+    <view class="trs bg-w">
+      <view class="th1">时间</view>
+      <view class="th2">商品</view>
+      <view class="th3">数量</view>
+      <view class="th4">总额</view>
     </view>
-    <view class="tr" wx:else>
-      <view class="td-time">{{item.time}}</view>
-      <view class="td-name">{{item.name}}</view>
-      <view class="td-num">{{item.num}}</view>
-      <view class="td-count">{{item.count}}</view>
-    </view>
-  </block>
-</view>
+    <block wx:for="{{listData}}" wx:key="{{code}}">
+      <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+        <view class="td-time">{{item.time}}</view>
+        <view class="td-name">{{item.name}}</view>
+        <view class="td-num">{{item.num}}</view>
+        <view class="td-count">{{item.count}}</view>
+      </view>
+      <view class="tr" wx:else>
+        <view class="td-time">{{item.time}}</view>
+        <view class="td-name">{{item.name}}</view>
+        <view class="td-num">{{item.num}}</view>
+        <view class="td-count">{{item.count}}</view>
+      </view>
+    </block>
+  </view>
 
 </view>

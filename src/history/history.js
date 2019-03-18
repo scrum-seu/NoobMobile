@@ -16,78 +16,78 @@ Page({
     datePickerPath: "../images/datePicker.png",
     listData: [{
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       },
       {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }, {
         "time": "13号18:31",
-        "name": "丹顿公子正装西裤男士直筒修身商务休闲裤",
+        "name": "If you see this, means the code is not working right",
         "num": "1",
         "count": "139¥"
       }
@@ -129,6 +129,43 @@ Page({
       startDate: (Y - 5).toString() + "-01-01",
       endDate: Y.toString() + "-12-01",
     });
+
+    // 向服务器发送请求获取购买历史记录
+    this.get_his();
+  },
+
+  /**
+   * 向服务器发送请求获取购买历史记录
+   */
+  get_his: function() {
+    var t = this;
+    wx: wx.request({
+      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000//get_purchase_history',
+      data: {
+        user_id: this.data.user_id,
+        year: this.data.pickerYear,
+        month:this.data.pickerMonth
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        // console.log(res.data)
+        var req_data = res.data
+        // get List of history
+        his_list = req_data['history']
+        t.setData({
+          listData:his_list
+        })
+      },
+      fail: function (res) {
+        console.log(res.data)
+      },
+      // complete: function(res) {},
+    })
   },
 
   /**
@@ -192,6 +229,6 @@ Page({
       pickerMonth: parseInt(e.detail.value.substr(5, 7))
     })
     // 向服务器发送请求获取购买历史记录
-
+    this.get_his();
   }
 })
