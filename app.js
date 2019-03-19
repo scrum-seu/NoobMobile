@@ -40,8 +40,10 @@ App({
 
   globalData: {
     userInfo: null,
-    user_id: 4
+    user_id: 4,
+    user_info:null
     // 登陆之后user_id用于保存检测到用户的id
+    // user_info用于保存用户信息
   },
 
   /**
