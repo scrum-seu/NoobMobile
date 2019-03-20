@@ -12,9 +12,9 @@ Page({
     user_id: app.globalData.user_id,
     userInfo: {},
     //分别为天数，次数，和金额
-    days: 256,
-    times: 13,
-    money: 1366.8
+    days: null,
+    times: null,
+    money: null,
   },
 
 
@@ -146,7 +146,9 @@ Page({
 
   showUserInfo: function(){
     // 切换到完善信息页面
-
+    wx.navigateTo({
+      url: '../perfectInfo/perfectInfo'
+    })
   },
 
   showShoppingHistory: function () {

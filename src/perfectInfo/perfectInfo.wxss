@@ -137,6 +137,7 @@ page{
 }
 
 .verified_info{
+  margin: 10rpx;
   height: 30rpx;
   width: 80%;
   font-size: 25rpx;

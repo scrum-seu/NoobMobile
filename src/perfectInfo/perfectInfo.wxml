@@ -11,7 +11,7 @@
   <text class='tips'>请完善信息！</text>
   <view class="item">
     <image src="../images/perfectInfo_name.png" class="itemIcon" mode='aspectFit'></image>
-    <input placeholder='{{name?name:"请输入姓名"}}' class='input' bindblur='listenName'></input>
+    <input placeholder="请输入姓名" class='input' bindblur='listenName' value='{{name}}'></input>
     <block wx:if="{{name_judge}}">
       <image src='../images/perfectInfo_correct.png' class='correct' mode='aspectFit'></image>
     </block>
@@ -20,7 +20,7 @@
 
   <view class="item">
     <image src="../images/perfectInfo_age.png" class="itemIcon" mode='aspectFit'></image>
-    <input placeholder='{{age?age:"请输入年龄"}}' class='input' bindblur='listenAge' type='number'></input>
+    <input placeholder="请输入年龄" class='input' bindblur='listenAge' type='number' value='{{age}}'></input>
     <block wx:if="{{age_judge}}">
       <image src='../images/perfectInfo_correct.png' class='correct' mode='aspectFit'></image>
     </block>
@@ -29,7 +29,7 @@
 
   <view class="item">
     <image src='../images/perfectInfo_phone_num.png' class='itemIcon' mode='aspectFit'></image>
-    <input placeholder='{{phone?phone:"请输入手机号"}}' class='input' maxlength='11' bindblur='listenPhone' type='number'></input>
+    <input placeholder="请输入手机号" class='input' maxlength='11' bindblur='listenPhone' type='number' value='{{phone}}'></input>
     <block wx:if="{{phone_judge}}">
       <image src='../images/perfectInfo_correct.png' class='correct' mode='aspectFit'></image>
     </block>
@@ -56,3 +56,4 @@
 <view class="buttonContainer">
   <button class="logOutButton"  hover-class='logOutButtonPressed' bindtap='logoutConfirm'>提交信息</button>
 </view>
+<view class='verified_info'>{{verified_all?verified_all: ""}}</view>

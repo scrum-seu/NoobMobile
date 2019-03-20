@@ -14,84 +14,7 @@ Page({
     startDate: "2012-01-01",
     endDate: "2012-01-01",
     datePickerPath: "../images/datePicker.png",
-    listData: [{
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      },
-      {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }, {
-        "time": "13号18:31",
-        "name": "If you see this, means the code is not working right",
-        "num": "1",
-        "count": "139¥"
-      }
-    ]
+    listData: [],
   },
 
   /**
@@ -140,9 +63,9 @@ Page({
   get_his: function() {
     var t = this;
     wx: wx.request({
-      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000//get_purchase_history',
+      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_purchase_history',
       data: {
-        user_id: this.data.user_id,
+        user_id: app.globalData.user_id,
         year: this.data.pickerYear,
         month:this.data.pickerMonth
       },
@@ -156,7 +79,7 @@ Page({
         // console.log(res.data)
         var req_data = res.data
         // get List of history
-        his_list = req_data['history']
+        var his_list = req_data['history']
         t.setData({
           listData:his_list
         })
@@ -220,8 +143,7 @@ Page({
 
   bindDateChange(e) {
 
-    console.log('picker发送选择改变，携带值为', e.detail.value.substr(0, 4));
-
+    // console.log('picker发送选择改变，携带值为', e.detail.value.substr(0, 4));
     // var date = new Date(e.detail.value);     
     this.setData({
       date: e.detail.value,

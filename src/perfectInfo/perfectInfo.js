@@ -20,14 +20,15 @@ Page({
     ],  //下拉列表的数据
     // index: 0,  //选择的下拉列表下标
     userInfo: {},
-    name: app.globalData.name,
-    age: app.globalData.age,
-    phone: app.globalData.phone,
-    occupation: app.globalData.occupation,
+    name: app.globalData.user_info["name"],
+    age: app.globalData.user_info["age"],
+    phone: app.globalData.user_info["phone"],
+    occupation: app.globalData.user_info["occupation"],
 
     verified_name: null,
     verified_age: null,
     verified_phone: null,
+    verified_all: null,
 
     name_judge: false,
     age_judeg: false,
@@ -42,6 +43,7 @@ Page({
     if (tmp_name == null || tmp_name == "")
     {
       this.setData({
+        name: app.globalData.user_info["name"],
         verified_name: "名字不能为空，请重新输入！"
       })
     }
@@ -64,6 +66,7 @@ Page({
     var tmp_age = e.detail.value
     if (!re.test(tmp_age) || tmp_age < 1 || tmp_age > 120) {
       this.setData({
+        age: app.globalData.user_info["age"],
         verified_age: "年龄输入不正确，请重新输入！"
       })
     }
@@ -85,6 +88,7 @@ Page({
     var tmp_phone = e.detail.value
     if (!re.test(tmp_phone)) {
       this.setData({
+        phone: app.globalData.user_info["phone"],
         verified_phone: "手机号输入不正确，请重新输入！"
       })
     }
@@ -190,6 +194,54 @@ Page({
    * 提交完善信息
    */
   logoutConfirm: function(){
-
+    var that = this
+    if (that.data.age_judeg && that.data.name_judge && that.data.phone_judge || 
+    that.data.name || that.data.age || that.data.phone)
+    {
+      app.globalData.user_info["name"] = that.data.name
+      app.globalData.user_info["age"] = that.data.age
+      app.globalData.user_info["phone"] = that.data.phone
+      app.globalData.user_info["occupation"] = that.data.occupation
+      wx:wx.request({
+        url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/perfect_info',
+        data: {
+          user_id: app.globalData.user_id,
+          name: app.globalData.user_info["name"],
+          age: app.globalData.user_info["age"],
+          occupation: app.globalData.user_info["occupation"],
+          phone_num: app.globalData.user_info["phone"],
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function(res) {
+          if (res.data["success"])
+          {
+            that.setData({
+              verified_all: "完善成功！"
+            })
+          }
+          else{
+            that.setData({
+              verified_all: "网络错误，完善失败！"
+            })
+          }
+        },
+        fail: function(res) {
+          that.setData({
+            verified_all: "网络错误，完善失败！"
+          })
+        },
+        complete: function(res) {},
+      })
+    }
+    else{
+      that.setData({
+        verified_all: "请重新检查录入信息！"
+      })
+    }
   }
 })
