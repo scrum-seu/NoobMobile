@@ -1,8 +1,7 @@
 {
   "pages": [
-    "src/login/login",
     "src/me/me",
-    
+    "src/login/login",
     "src/recommend/recommend",
     "src/myinfo/myinfo",
     "src/history/history"

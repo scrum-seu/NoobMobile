@@ -58,6 +58,26 @@ page{
   border-top-right-radius: 5px; */
 }
 
+.shareBtn {
+  width: 65px;
+  height: 45px;
+  background: none;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: -10rpx;
+  /* top: -10rpx; */
+}
+
+.shareBtn::after {
+  border: 0rpx;
+}
+
+.shareBtnImg {
+  width: 28px;
+  height: 28px;
+}
+
 .spendHistoryContainer{
   width: 100%;
   height: 95rpx;
@@ -119,7 +139,7 @@ page{
 }
 
 .achContainer{
-  margin-top: 15rpx;
+  margin-top: 30rpx;
   width: 85%;
   height: 330rpx;
   /* background-color: #ff0000; */
@@ -198,6 +218,8 @@ page{
   width: 310rpx;
   border-radius: 98rpx; 
 }
+
+
 
 
 
