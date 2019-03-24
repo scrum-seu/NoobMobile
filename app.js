@@ -40,8 +40,15 @@ App({
 
   globalData: {
     userInfo: null,
-    user_id: 4,
-    user_info:null
+    user_id: null,
+    user_info: {
+      biomarker: null,
+      name: null,
+      age: null,
+      sex: null,
+      occupation: null,
+      phone_num: null,
+    }
     // 登陆之后user_id用于保存检测到用户的id
     // user_info用于保存用户信息
   },
@@ -66,4 +73,5 @@ App({
   onError: function (msg) {
     
   }
+
 })

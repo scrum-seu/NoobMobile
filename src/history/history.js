@@ -63,7 +63,7 @@ Page({
   get_his: function() {
     var t = this;
     wx: wx.request({
-      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_purchase_history',
+      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_purchase_history',
       data: {
         user_id: app.globalData.user_id,
         year: this.data.pickerYear,

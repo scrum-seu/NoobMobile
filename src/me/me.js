@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_id: app.globalData.user_id,
+    user_id: null,
     userInfo: {},
     //分别为天数，次数，和金额
     days: null,
@@ -35,6 +35,9 @@ Page({
         })
       }
     })
+    this.setData({
+      user_id: app.globalData.user_id,
+    })
 
     //获取用户购物信息
     this.usergetData();
@@ -47,7 +50,7 @@ Page({
      */
     var t = this;
     wx: wx.request({
-      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_general_consumption_info',
+      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_general_consumption_info',
       data: {
         user_id: this.data.user_id,
       },

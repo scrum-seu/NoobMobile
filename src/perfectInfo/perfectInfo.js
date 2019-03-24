@@ -38,17 +38,15 @@ Page({
   /**
    * name获取
    */
-  listenName: function(e){
+  listenName: function (e) {
     var tmp_name = e.detail.value
-    if (tmp_name == null || tmp_name == "")
-    {
+    if (tmp_name == null || tmp_name == "") {
       this.setData({
         name: app.globalData.user_info["name"],
         verified_name: "名字不能为空，请重新输入！"
       })
     }
-    else
-    {
+    else {
       this.setData({
         verified_name: null,
         name: tmp_name,
@@ -138,72 +136,71 @@ Page({
     //   }
     // })
 
-    
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   },
 
-   /**
-   * 提交完善信息
-   */
-  logoutConfirm: function(){
+  /**
+  * 提交完善信息
+  */
+  logoutConfirm: function () {
     var that = this
-    if (that.data.age_judeg && that.data.name_judge && that.data.phone_judge || 
-    that.data.name || that.data.age || that.data.phone)
-    {
+    if (that.data.age_judeg && that.data.name_judge && that.data.phone_judge ||
+      that.data.name || that.data.age || that.data.phone) {
       app.globalData.user_info["name"] = that.data.name
       app.globalData.user_info["age"] = that.data.age
       app.globalData.user_info["phone"] = that.data.phone
       app.globalData.user_info["occupation"] = that.data.occupation
-      wx:wx.request({
-        url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/perfect_info',
+      wx: wx.request({
+        url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/perfect_info',
         data: {
           user_id: app.globalData.user_id,
           name: app.globalData.user_info["name"],
@@ -217,28 +214,27 @@ Page({
         method: 'POST',
         dataType: 'json',
         responseType: 'text',
-        success: function(res) {
-          if (res.data["success"])
-          {
+        success: function (res) {
+          if (res.data["success"]) {
             that.setData({
               verified_all: "完善成功！"
             })
           }
-          else{
+          else {
             that.setData({
               verified_all: "网络错误，完善失败！"
             })
           }
         },
-        fail: function(res) {
+        fail: function (res) {
           that.setData({
             verified_all: "网络错误，完善失败！"
           })
         },
-        complete: function(res) {},
+        complete: function (res) { },
       })
     }
-    else{
+    else {
       that.setData({
         verified_all: "请重新检查录入信息！"
       })

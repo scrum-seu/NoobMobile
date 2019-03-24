@@ -1,8 +1,8 @@
 //获取应用实例
 const app = getApp()
 
-var url_prefix = "https://github.com/scrum-seu/Noob/tree/dev/goods_image/"
-var url_suffix = ".jpg?raw=true"
+var image_url = "http://images.chinanorth.cloudapp.chinacloudapi.cn:8088/"
+var image_url_suffix = ".jpg"
 
 Page({
   /**
@@ -40,7 +40,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx:wx.request({
-      url: 'https://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/recommend',
+      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/recommend',
       data: {
         user_id: app.globalData.user_id
       },
@@ -57,7 +57,7 @@ Page({
         for (var i = 0; i <data_list.length; ++i)
         {
           var temp_dict = {}
-          temp_dict["proUrl"] = url_prefix + data_list[i]["good_id"] + url_suffix
+          temp_dict["proUrl"] = image_url + data_list[i]["good_id"] + image_url_suffix
           console.log(temp_dict["proUrl"])
           temp_dict["proTitle"] = data_list[i]["name"]
           temp_dict["proDec"] = data_list[i]["name"]

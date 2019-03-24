@@ -6,10 +6,6 @@
     <text class='useridTitle'>微信id:          {{userInfo.nickName}}</text>
     <text class='userinfoTitle'>您是Noob商城的第 <text class="useridStyle">{{user_id}}</text> 位顾客</text>
   </view>
-
-
-
-
 </view>
 
 

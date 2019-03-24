@@ -1,10 +1,13 @@
 {
   "pages": [
-    "src/me/me",
     "src/login/login",
+    "src/me/me",
+    
+    
     "src/recommend/recommend",
     "src/myinfo/myinfo",
-    "src/history/history"
+    "src/history/history",
+    "src/perfectInfo/perfectInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#c8dfe7",

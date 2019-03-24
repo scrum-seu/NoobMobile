@@ -125,10 +125,10 @@ Page({
           })
 
           wx.uploadFile({
-            url: 'http://127.0.0.1:5000/face_login', //仅为示例，非真实的接口地址
-            header: {
-              'content-type': 'multipart/form-data'
-            },
+            url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/face_login', //仅为示例，非真实的接口地址
+            // header: {
+            //   'content-type': 'multipart/form-data'
+            // },
             filePath: tempFilePaths[0],
             name: 'image_file',
             success: function(res) {
@@ -150,6 +150,7 @@ Page({
                 // 设置全局的userInfo和user_id
                 app.globalData.user_info = data.user_info;
                 app.globalData.user_id = data.user_id;
+
                 if (data.is_new == 1) {
                   that.setData({
                     userRealInfo: {
