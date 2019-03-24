@@ -15,8 +15,9 @@ Page({
     selectData: [
       "教师",
       "IT",
-      "医疗",
+      "医生",
       "销售",
+      "其他",
     ],  //下拉列表的数据
     // index: 0,  //选择的下拉列表下标
     userInfo: {},
@@ -121,21 +122,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // //获取微信头像
-    // // app.globalData.userInfo;
-    // var that = this;
-    // wx.getUserInfo({
-    //   success(res) {
-    //     // console.log(res.userInfo)
-    //     that.setData({
-    //       userInfo: {
-    //         avatarUrl: res.userInfo.avatarUrl,
-    //         nickName: res.userInfo.nickName
-    //       }
-    //     })
-    //   }
-    // })
-
+    // 获取用户信息
+    this.setData({
+      name: app.globalData.user_info["name"],
+      age: app.globalData.user_info["age"],
+      phone: app.globalData.user_info["phone"],
+      occupation: app.globalData.user_info["occupation"],
+    })
 
   },
 
