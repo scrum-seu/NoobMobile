@@ -121,7 +121,7 @@ Page({
           wx.showToast({
             title: '识别中，请稍候',
             icon: 'loading',
-            duration: 2000
+            duration: 5000
           })
 
           wx.uploadFile({
