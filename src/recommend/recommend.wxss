@@ -10,6 +10,10 @@
 
 }
 
+.recommendTitle{
+  font-size: 45rpx;
+}
+
 .scroll-view_H{
     width: 100%;
     text-align: center;
