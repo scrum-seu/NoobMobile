@@ -38,41 +38,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx:wx.request({
-      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/recommend',
-      data: {
-        user_id: app.globalData.user_id
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: 'POST',
-      dataType: 'json',
-      responseType: 'text',
-      success: function(res) {
-        // console.log(res.data["recommends"])
-        var data_list = res.data["recommends"]
-        var res_list = []
-        for (var i = 0; i <data_list.length; ++i)
-        {
-          var temp_dict = {}
-          temp_dict["proUrl"] = image_url + data_list[i]["good_id"] + image_url_suffix
-          console.log(temp_dict["proUrl"])
-          temp_dict["proTitle"] = data_list[i]["name"]
-          temp_dict["proDec"] = data_list[i]["name"]
-          temp_dict["proPrice"] = data_list[i]["price"]
-          res_list.push(temp_dict)
-        }
-        that.setData({
-          proList: res_list,
-        })
-      },
-      fail: function(res) {},
-      complete: function(res) {
+    // var that = this;
+    // wx:wx.request({
+    //   url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/recommend',
+    //   data: {
+    //     user_id: app.globalData.user_id
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   method: 'POST',
+    //   dataType: 'json',
+    //   responseType: 'text',
+    //   success: function(res) {
+    //     // console.log(res.data["recommends"])
+    //     var data_list = res.data["recommends"]
+    //     var res_list = []
+    //     for (var i = 0; i <data_list.length; ++i)
+    //     {
+    //       var temp_dict = {}
+    //       temp_dict["proUrl"] = image_url + data_list[i]["good_id"] + image_url_suffix
+    //       console.log(temp_dict["proUrl"])
+    //       temp_dict["proTitle"] = data_list[i]["name"]
+    //       temp_dict["proDec"] = data_list[i]["name"]
+    //       temp_dict["proPrice"] = data_list[i]["price"]
+    //       res_list.push(temp_dict)
+    //     }
+    //     that.setData({
+    //       proList: res_list,
+    //     })
+    //   },
+    //   fail: function(res) {},
+    //   complete: function(res) {
 
-      },
-    })
+    //   },
+    // })
   },
 
   /**

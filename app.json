@@ -1,7 +1,8 @@
 {
   "pages": [
-    "src/login/login",
+    "src/new_recommend/new_recommend",
     "src/recommend/recommend",
+    "src/login/login",
     "src/me/me",
     "src/myinfo/myinfo",
     "src/history/history",
@@ -21,7 +22,7 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "src/recommend/recommend",
+        "pagePath": "src/new_recommend/new_recommend",
         "text": "推荐",
         "iconPath": "src/images/recommend-unselected.png",
         "selectedIconPath": "src/images/recommend-selected.png"

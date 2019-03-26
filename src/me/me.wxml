@@ -43,10 +43,17 @@
   <image mode="aspectFit" src="../images/rightArrow.png" class="arrowPic"></image>
 </view>
 
+<view class="likeGoodsContainer" hover-class='containerPressed' bindtap='showGoodsInfo'>
+  <text class="likeGoodsCaption">我喜欢的商品</text>
+  <image mode="aspectFit" src="../images/rightArrow.png" class="arrowPic"></image>
+</view>
+
 <view class="userInformationContainer" hover-class='containerPressed' bindtap='showUserInfo'>
   <text class="informationCaption">完善个人信息</text>
   <image mode="aspectFit" src="../images/rightArrow.png" class="arrowPic"></image>
 </view>
+
+
 
 <view class="buttonContainer">
 <button class="logOutButton"  hover-class='logOutButtonPressed' bindtap='logoutConfirm'>退出登录</button>

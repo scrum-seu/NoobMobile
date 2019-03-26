@@ -1,5 +1,5 @@
 <view class="yearContainer">
-  <text class='recommendTitle'>猜你喜欢</text>
+  <text class='recommendTitle'>我的喜欢</text>
 </view>
 
 <scroll-view class="scroll-view_H" scroll-x scroll-with-animation style="width: 100%;height:{{windowHeight}}px" bindscroll="getSelectItem">
