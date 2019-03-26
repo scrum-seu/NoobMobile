@@ -99,7 +99,7 @@ Page({
       url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_like_and_comments',
       data: {
         user_id: app.globalData.user_id,
-        goods_id: that[that.data.currentIndex].goods_id
+        goods_id: that.data.list[that.data.currentIndex].goods_id
       },
       header: {
         'content-type': 'application/json' // 默认值
