@@ -195,6 +195,9 @@ Page({
         this.setData({
           list
         })
+
+        // 获取当前商品的评论和喜欢信息
+        that.set_local_goods_info();
       },
       fail: function (res) {
         console.log(res.data)
@@ -202,8 +205,7 @@ Page({
       // complete: function(res) {},
     })
 
-    // 获取当前商品的评论和喜欢信息
-    that.set_local_goods_info();
+
   },
 
 

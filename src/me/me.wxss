@@ -220,7 +220,7 @@ page{
   font-size: 40rpx;
   font-weight: bold;
   border: 0;
-  margin-top: 35rpx;
+  margin-top: 25rpx;
   width: 310rpx;
   border-radius: 98rpx; 
 }
