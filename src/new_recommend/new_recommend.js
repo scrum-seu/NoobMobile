@@ -203,7 +203,7 @@ Page({
     })
 
     // 获取当前商品的评论和喜欢信息
-    set_local_goods_info();
+    that.set_local_goods_info();
   },
 
 
@@ -333,7 +333,7 @@ Page({
     if (this.data.currentIndex != tag) {
       console.log("tag changed!")
       //滑动获取当前good_id对应的信息
-      set_local_goods_info();
+      that.set_local_goods_info();
     }
 
   },
