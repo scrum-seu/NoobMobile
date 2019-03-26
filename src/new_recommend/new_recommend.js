@@ -6,6 +6,7 @@ var util = require('../utils/util.js');
 
 var image_url = "http://images.chinanorth.cloudapp.chinacloudapi.cn:8088/"
 var image_url_suffix = ".jpg"
+var list=new Array()
 
 // let list = [
 //   {
@@ -99,7 +100,7 @@ Page({
       url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_like_and_comments',
       data: {
         user_id: app.globalData.user_id,
-        goods_id: that.data.list[that.data.currentIndex].goods_id
+        goods_id: list[that.data.currentIndex].goods_id
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -111,12 +112,12 @@ Page({
         console.log(res.data)
         var req_data = res.data
         if (req_data['like'] == 1) {
-          that.data.list[that.data.currentIndex].agree = true;
+          list[that.data.currentIndex].agree = true;
         } else {
-          that.data.list[that.data.currentIndex].agree = false;
+          list[that.data.currentIndex].agree = false;
         }
-        that.data.list[that.data.currentIndex].agreeNum = req_data['likecount'];
-        that.data.list[that.data.currentIndex].commentNum = req_data['commentcount'];
+        list[that.data.currentIndex].agreeNum = req_data['likecount'];
+        list[that.data.currentIndex].commentNum = req_data['commentcount'];
         // 设置评论
         var cmt_tmp = new Array();
         for (var i = 0; i < req_data['comments'].length; ++i) {
@@ -132,7 +133,10 @@ Page({
           cmt_tmp.push(cmt_item);
         }
         //设置list数据
-        that.data.list[that.data.currentIndex].comment = cmt_tmp;
+        list[that.data.currentIndex].comment = cmt_tmp;
+        that.setData({
+          list
+        })
       },
       fail: function (res) {
         console.log(res.data)
@@ -145,11 +149,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var list = new Array();
     //获取用户推荐商品信息，初始化list
     var that = this;
     wx: wx.request({
-      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000//get_recommend_info',
+      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_recommend_info',
       data: {
         user_id: app.globalData.user_id,
       },
@@ -192,7 +195,7 @@ Page({
           list.push(goods);
         }
         //设置list数据
-        this.setData({
+        that.setData({
           list
         })
 
