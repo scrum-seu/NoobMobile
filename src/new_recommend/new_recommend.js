@@ -93,71 +93,6 @@ Page({
     cardLeftIn: false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var list = new Array();
-    //获取用户推荐商品信息，初始化list
-    var that = this;
-    wx: wx.request({
-      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000//get_recommend_info',
-      data: {
-        user_id: app.globalData.user_id,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: 'POST',
-      dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
-        // :return: res_dict = {"data": [{good_id:
-        // 'name': self.name,
-        // 'price': self.price,
-        // 'category': self.category,
-        // 'other2': self.other2
-        //                                 recommend: ["个性推荐"， "常规推荐"]},...]}
-        console.log(res.data)
-        var req_data = res.data
-        // 初始化list
-        goods_list = req_data['data'];
-        for (var i = 0; i < goods_list.length; ++i) {
-          var goods = new Array();
-          goods['goods_id'] = goods_list[i]['good_id'];
-          goods['title'] = goods_list[i]['name'];
-          goods['price'] = goods_list[i]['price'];
-          goods['category'] = goods_list[i]['category'];
-          goods['sub_title'] = goods_list[i]['name'];
-          // goods['sub_title']=goods_list[i]['other2'];
-          goods['agree'] = false;
-          goods['agreeNum'] = 0;
-          goods['commentNum'] = 0;
-          goods['comment'] = [];
-          goods["cover"] = image_url + goods_list[i]['good_id'] + image_url_suffix
-          if (goods_list[i]['recommend'].length == 1) {
-            goods['tag'] = { tag1: goods_list[i]['recommend'][0] };
-          } else {
-            goods['tag'] = { tag1: goods_list[i]['recommend'][0], tag2: goods_list[i]['recommend'][1 + Math.floor(Math.random() * (goods_list[i]['recommend'].length - 1))] };
-            // 最多显示两个标签，随机显示一个
-          }
-          list.push(goods);
-        }
-        //设置list数据
-        this.setData({
-          list
-        })
-      },
-      fail: function (res) {
-        console.log(res.data)
-      },
-      // complete: function(res) {},
-    })
-
-    // 获取当前商品的评论和喜欢信息
-    set_local_goods_info();
-  },
-
   set_local_goods_info: function () {
     var that = this;
     wx: wx.request({
@@ -205,6 +140,73 @@ Page({
       // complete: function(res) {},
     })
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var list = new Array();
+    //获取用户推荐商品信息，初始化list
+    var that = this;
+    wx: wx.request({
+      url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000//get_recommend_info',
+      data: {
+        user_id: app.globalData.user_id,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        // :return: res_dict = {"data": [{good_id:
+        // 'name': self.name,
+        // 'price': self.price,
+        // 'category': self.category,
+        // 'other2': self.other2
+        //                                 recommend: ["个性推荐"， "常规推荐"]},...]}
+        console.log(res.data)
+        var req_data = res.data
+        // 初始化list
+        var goods_list = req_data['data'];
+        for (var i = 0; i < goods_list.length; ++i) {
+          var goods = new Array();
+          goods['goods_id'] = goods_list[i]['good_id'];
+          goods['title'] = goods_list[i]['name'];
+          goods['price'] = goods_list[i]['price'];
+          goods['category'] = goods_list[i]['category'];
+          goods['sub_title'] = goods_list[i]['name'];
+          // goods['sub_title']=goods_list[i]['other2'];
+          goods['agree'] = false;
+          goods['agreeNum'] = 0;
+          goods['commentNum'] = 0;
+          goods['comment'] = [];
+          goods["cover"] = image_url + goods_list[i]['good_id'] + image_url_suffix
+          if (goods_list[i]['recommend'].length == 1) {
+            goods['tag'] = { tag1: goods_list[i]['recommend'][0] };
+          } else {
+            goods['tag'] = { tag1: goods_list[i]['recommend'][0], tag2: goods_list[i]['recommend'][1 + Math.floor(Math.random() * (goods_list[i]['recommend'].length - 1))] };
+            // 最多显示两个标签，随机显示一个
+          }
+          list.push(goods);
+        }
+        //设置list数据
+        this.setData({
+          list
+        })
+      },
+      fail: function (res) {
+        console.log(res.data)
+      },
+      // complete: function(res) {},
+    })
+
+    // 获取当前商品的评论和喜欢信息
+    set_local_goods_info();
+  },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
