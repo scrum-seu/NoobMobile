@@ -89,6 +89,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    data_list:null,
     currentIndex: 0,
     cardRightIn: false,
     cardLeftIn: false
@@ -135,7 +136,7 @@ Page({
         //设置list数据
         list[that.data.currentIndex].comment = cmt_tmp;
         that.setData({
-          list
+          data_list:list
         })
       },
       fail: function (res) {
@@ -196,7 +197,7 @@ Page({
         }
         //设置list数据
         that.setData({
-          list
+          data_list:list
         })
 
         // 获取当前商品的评论和喜欢信息
@@ -233,7 +234,7 @@ Page({
 
   toAgree: function (e) {
     // console.log(list[this.data.currentIndex].goods_id);
-    let i = this.data.list[this.data.currentIndex]
+    let i = this.data.data_list[this.data.currentIndex]
     i.agree = !i.agree
     if (i.agree) {
       i.agreeNum = i.agreeNum + 1
@@ -282,8 +283,8 @@ Page({
         // complete: function(res) {},
       })
     }
-    this.setData({
-      list
+    that.setData({
+      data_list:list
     })
   },
 
@@ -327,7 +328,7 @@ Page({
       })
     } else {
       this.setData({
-        currentIndex: idx == this.data.list.length - 1 ? idx : idx + 1,
+        currentIndex: idx == this.data.data_list.length - 1 ? idx : idx + 1,
         cardRightIn: true,
         cardLeftIn: false
       })
