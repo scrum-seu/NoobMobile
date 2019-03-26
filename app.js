@@ -40,7 +40,7 @@ App({
 
   globalData: {
     userInfo: null,
-    user_id: null,
+    user_id: 9,
     user_info: {
       biomarker: null,
       name: null,
