@@ -100,6 +100,7 @@
   margin-bottom: 5rpx;
   font-weight: bolder;
   font-size: 50rpx;
+  color: #CA414C;
 }
 
 /* 评论框 */
