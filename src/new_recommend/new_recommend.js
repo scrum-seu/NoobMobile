@@ -8,18 +8,18 @@ var image_url = "http://images.chinanorth.cloudapp.chinacloudapi.cn:8088/"
 var image_url_suffix = ".jpg"
 var list=new Array()
 
-// let list = [
+// let l = [
 //   {
-//     // goods_id: 29,
-//     // category: '书籍',
-//     // tag: { tag1: "个性推荐", tag2: "常规推荐" },
-//     // cover: "29.jpg",
-//     // sub_title: "影响孩子一生的读物",
-//     // title: "许马体检，你必须知道的那些事儿",
-//     // agree: true,
-//     // price: 45,
-//     // agreeNum: 293,
-//     // commentNum: 56,
+//     goods_id: 29,
+//     category: '书籍',
+//     tag: { tag1: "个性推荐", tag2: "常规推荐" },
+//     cover: "29.jpg",
+//     sub_title: "影响孩子一生的读物",
+//     title: "许马体检，你必须知道的那些事儿",
+//     agree: true,
+//     price: 45,
+//     agreeNum: 293,
+//     commentNum: 56,
 //     comment: [
 //       {
 //         logo: '../images/male_pic.png',
@@ -150,6 +150,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     //获取用户推荐商品信息，初始化list
     var that = this;
     wx: wx.request({
@@ -170,12 +171,12 @@ Page({
         // 'category': self.category,
         // 'other2': self.other2
         //                                 recommend: ["个性推荐"， "常规推荐"]},...]}
-        console.log(res.data)
+        // console.log(res.data)
         var req_data = res.data
         // 初始化list
         var goods_list = req_data['data'];
         for (var i = 0; i < goods_list.length; ++i) {
-          var goods = new Array();
+          var goods = {};
           goods['goods_id'] = goods_list[i]['good_id'];
           goods['title'] = goods_list[i]['name'];
           goods['price'] = goods_list[i]['price'];
@@ -195,13 +196,14 @@ Page({
           }
           list.push(goods);
         }
+        console.log(list);
         //设置list数据
         that.setData({
           data_list:list
         })
 
-        // 获取当前商品的评论和喜欢信息
-        that.set_local_goods_info();
+        // // 获取当前商品的评论和喜欢信息
+        // that.set_local_goods_info();
       },
       fail: function (res) {
         console.log(res.data)
@@ -234,6 +236,7 @@ Page({
 
   toAgree: function (e) {
     // console.log(list[this.data.currentIndex].goods_id);
+    var that = this;
     let i = this.data.data_list[this.data.currentIndex]
     i.agree = !i.agree
     if (i.agree) {
@@ -243,7 +246,7 @@ Page({
         url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/insert_like_info',
         data: {
           user_id: app.globalData.user_id,
-          good_id: that[that.data.currentIndex].goods_id
+          goods_id: list[that.data.currentIndex].goods_id
         },
         header: {
           'content-type': 'application/json' // 默认值

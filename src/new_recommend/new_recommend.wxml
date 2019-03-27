@@ -4,7 +4,7 @@
 </view>
 
 <view class='container'>
-  <view class="con-wrap ripple {{cardRightIn?'flipInY':''}} {{cardLeftIn?'fadeInLeft':''}}" wx:for="{{data_list}}" wx:if="{{index==currentIndex}}" wx:key="{{item._id}}">
+  <view class="con-wrap ripple {{cardRightIn?'flipInY':''}} {{cardLeftIn?'fadeInLeft':''}}" wx:for="{{data_list}}" wx:if="{{index==currentIndex}}">
     <view class='card-box' bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
       <image wx:if="{{item.cover}}" class="card-img" style="background-image:url('{{item.cover}}')"></image>
       <view class='card-title'>{{item.title}}</view>
