@@ -102,7 +102,7 @@ Page({
             url: '../login/login'
           })
         } else {
-          console.log('弹框后点取消')
+          // console.log('弹框后点取消')
         }
       }
     })

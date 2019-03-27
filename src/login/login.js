@@ -55,11 +55,11 @@ Page({
   },
 
   getUserInfo: function(e) {
-    console.log(e.detail.errMsg);
+    // console.log(e.detail.errMsg);
     // 如果已经识别了人脸则点击登录进行跳转
     if (bool_detected == 1) {
       wx.switchTab({
-        url: '/src/recommend/recommend'
+        url: '/src/new_recommend/new_recommend'
       })
     }
 
@@ -132,7 +132,7 @@ Page({
             filePath: tempFilePaths[0],
             name: 'image_file',
             success: function(res) {
-              console.log(res.data);
+              // console.log(res.data);
               wx.hideToast(); // 隐藏Toast窗口
               var data = JSON.parse(res.data);
 

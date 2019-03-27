@@ -1,10 +1,10 @@
 <!-- src/new_recommend/new_recommend.wxml -->
 <view class="yearContainer">
   <text class='recommendTitle'>猜你喜欢</text>
+  <text class='subTitle'>{{currentIndex+1}} <text class='iTitle'>of</text> {{data_list.length}}</text>
 </view>
-
 <view class='container'>
-  <view class="con-wrap ripple {{cardRightIn?'flipInY':''}} {{cardLeftIn?'fadeInLeft':''}}" wx:for="{{data_list}}" wx:if="{{index==currentIndex}}">
+  <view class="con-wrap ripple {{cardRightIn?'flipInY':''}} {{cardLeftIn?'fadeInLeft':''}}" wx:for="{{data_list}}" wx:if="{{index==currentIndex}}" wx:key="{{item.goods_id}}">
     <view class='card-box' bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
       <image wx:if="{{item.cover}}" class="card-img" style="background-image:url('{{item.cover}}')"></image>
       <view class='card-title'>{{item.title}}</view>
@@ -13,14 +13,12 @@
       <view class="card-con-wrap">
         <view class='card-con-left'>
           <view class='card-author'>{{item.tag.tag1}}</view>
-          <view class='card-tag' >{{item.category}}</view>
+          <view class='card-tag'>{{item.category}}</view>
           <view class='card-fromNow' wx:if="{{item.tag.tag2}}">{{item.tag.tag2}}</view>
           <view class='card-tag2' wx:if="{{item.tag.tag3}}">{{item.tag.tag3}}</view>
           <view class='card-tag3' wx:if="{{item.tag.tag4}}">{{item.tag.tag4}}</view>
         </view>
-
         <view class='card-con-right'>
-          
           <view class='card-agree' catchtouchend='toAgree' data-id='{{item._id}}'>
             <image src="../images/{{item.agree?'agree-a.png':'agree.png'}}" class="ripple {{item.agree?'rubberBand':''}}"></image>
             <text>{{item.agreeNum}}</text>
@@ -31,9 +29,7 @@
           </view>
         </view>
       </view>
-
     </view>
-
     <view class='comment'>
       <view class='comment-title'>最新评论</view>
       <block wx:if="{{item.comment.length}}">
@@ -51,4 +47,10 @@
       </view>
     </view>
   </view>
+</view>
+
+
+<view  wx:if="{{showInput}}" class="inputContainer">
+  <input bindinput='userCmtInput' focus="{{focusInput}}" class='input-radius' bindblur="loseInputFocus" placeholder='请输入评论内容' placeholder-class='iconfont icon-sousuo mid-font ' placeholder-style='color:#999999;font-size:14px' />
+  <button class="submitBtn"  bindtap="submitBtn">提交</button>
 </view>

@@ -51,8 +51,9 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
-        // console.log(res.data["recommends"])
+        
         var data_list = res.data["data"]
+        console.log(data_list)
         var res_list = []
         // :return: res_dict = {"data": [{good_id:
         //                                name:

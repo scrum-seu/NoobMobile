@@ -11,15 +11,25 @@
   height: 100rpx;
   background-color: #c8dfe7;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;  
 
 }
 
 .recommendTitle{
-  font-size: 45rpx;
+  font-size: 35rpx;
 }
+
+.subTitle{
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.iTitle{
+  font-style: italic;
+}
+
 .con-wrap{
   min-height: 100vh;  
 }
@@ -90,6 +100,36 @@
   margin-bottom: 5rpx;
   font-weight: bolder;
   font-size: 50rpx;
+}
+
+/* 评论框 */
+.inputContainer{
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center;   */
+}
+.input-radius{
+  border-radius: 15px;
+  margin: 0 0 3px 18px;
+  width: 270px;
+  background: #eee;
+  /* height: ; */
+  /* min-height: 0.8rem; */
+}
+
+.submitBtn{
+  /* right: 0; */
+  height: 75rpx;
+  width:150rpx;
+  font-size: 35rpx;
+  margin-right: 30rpx;
+  justify-content: center;
+  align-content: center;
 }
 
 

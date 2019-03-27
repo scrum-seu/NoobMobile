@@ -6,7 +6,7 @@ var util = require('../utils/util.js');
 
 var image_url = "http://images.chinanorth.cloudapp.chinacloudapi.cn:8088/"
 var image_url_suffix = ".jpg"
-var list=new Array()
+var list = new Array()
 
 // let l = [
 //   {
@@ -89,7 +89,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data_list:null,
+    inputCmt: null,
+    focusInput: false,
+    showInput: false,
+    data_list: null,
     currentIndex: 0,
     cardRightIn: false,
     cardLeftIn: false
@@ -110,8 +113,9 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log(res.data)
+        // console.log(res.data)
         var req_data = res.data
+
         if (req_data['like'] == 1) {
           list[that.data.currentIndex].agree = true;
         } else {
@@ -123,20 +127,22 @@ Page({
         var cmt_tmp = new Array();
         for (var i = 0; i < req_data['comments'].length; ++i) {
           var cmt_item = {}; //定义一个字典
-          if (req_data[i]["gender"] == 1) {
+          // console.log(req_data['comments'][i]);
+          if (req_data['comments'][i]['gender'] == 1) {
             cmt_item['logo'] = '../images/male_pic.png'
           } else {
             cmt_item['logo'] = '../images/female_pic.png'
           }
-          cmt_item['name'] = req_data[i]["name"]
-          cmt_item['txt'] = req_data[i]["txt"]
-          cmt_item['fromNow'] = req_data[i]["time"]
+          cmt_item['name'] = req_data['comments'][i]["name"]
+          cmt_item['txt'] = req_data['comments'][i]["txt"]
+          cmt_item['fromNow'] = req_data['comments'][i]["time"]
           cmt_tmp.push(cmt_item);
         }
         //设置list数据
         list[that.data.currentIndex].comment = cmt_tmp;
+        // console.log('当前商品'+list[that.data.currentIndex].goods_id+'的信息:\n'+list[that.data.currentIndex]);
         that.setData({
-          data_list:list
+          data_list: list
         })
       },
       fail: function (res) {
@@ -153,6 +159,11 @@ Page({
 
     //获取用户推荐商品信息，初始化list
     var that = this;
+    wx.showToast({
+      title: '正在加载商品',
+      icon: 'loading',
+      duration: 5000
+    })
     wx: wx.request({
       url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/get_recommend_info',
       data: {
@@ -165,6 +176,11 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
+        wx.showToast({
+          title: '左右滑动浏览',
+          icon: 'success',
+          duration: 2000
+        })
         // :return: res_dict = {"data": [{good_id:
         // 'name': self.name,
         // 'price': self.price,
@@ -196,17 +212,18 @@ Page({
           }
           list.push(goods);
         }
-        console.log(list);
+        // console.log(list);
         //设置list数据
         that.setData({
-          data_list:list
+          data_list: list
         })
-
-        // // 获取当前商品的评论和喜欢信息
-        // that.set_local_goods_info();
       },
       fail: function (res) {
-        console.log(res.data)
+        wx.showToast({
+          title: '请检查网络连接',
+          icon: 'none',
+          duration: 4000
+        })
       },
       // complete: function(res) {},
     })
@@ -220,11 +237,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.showToast({
-      title: '在卡片上左右滑动浏览推荐商品',
-      icon: 'none',
-      duration: 4000
-    })
+    // wx.showToast({
+    //   title: '在卡片上左右滑动浏览推荐商品',
+    //   icon: 'none',
+    //   duration: 4000
+    // })
   },
 
   /**
@@ -234,19 +251,62 @@ Page({
 
   },
 
-  toAgree: function (e) {
-    // console.log(list[this.data.currentIndex].goods_id);
+  loseInputFocus: function () {
+    this.setData({
+      showInput: false,
+      focusInput: false
+    })
+
+  },
+
+  submitBtn: function () {
     var that = this;
-    let i = this.data.data_list[this.data.currentIndex]
-    i.agree = !i.agree
-    if (i.agree) {
-      i.agreeNum = i.agreeNum + 1
-      //发送用户喜欢该商品的命令
+    // 判断用户输入是否为空
+    if (this.data.inputCmt == null) {
+      // console.log("为空");
+      wx.showToast({
+        title: '评论内容不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      // console.log(this.data.inputCmt);
+      // 发送插入评论请求============================
+      //获取当前时间戳  
+      var timestamp = Date.parse(new Date());
+      timestamp = timestamp / 1000;
+      //获取当前时间 ，设置日期选择器的开始和结束日期
+      var n = timestamp * 1000;
+      var date = new Date(n);
+      //年  
+      var Y = date.getFullYear();
+      //月  
+      var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+      //日  
+      var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      //时  
+      var h = date.getHours();
+      //分  
+      var m = date.getMinutes();
+      //秒  
+      var s = date.getSeconds();
+      var t = Y + '-' + M + '-' + D + ' ' + h + ":" + m + ":" + s;
+      // console.log(t);
       wx: wx.request({
-        url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/insert_like_info',
+        url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/insert_comment',
         data: {
+          // user_id = req_data["user_id"]
+          // good_id = req_data["good_id"]
+          // txt = req_data["content"]
+          // gender = req_data["gender"]
+          // time = req_data["time"]
+          // name = req_data["name"]
           user_id: app.globalData.user_id,
-          goods_id: list[that.data.currentIndex].goods_id
+          good_id: list[that.data.currentIndex].goods_id,
+          content: that.data.inputCmt,
+          gender: app.globalData.userInfo.gender,
+          time: t,
+          name: app.globalData.userInfo.nickName
         },
         header: {
           'content-type': 'application/json' // 默认值
@@ -255,7 +315,53 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: function (res) {
+          // console.log('插入新评论成功！');
+          // console.log(res.data);
+          // 刷新页面
+          that.set_local_goods_info();
+        },
+        fail: function (res) {
           console.log(res.data)
+        },
+        // complete: function(res) {},
+      })
+
+      // 清空评论槽
+      this.setData({
+        inputCmt: null
+      })
+    }
+  },
+
+  userCmtInput: function (e) {
+    this.setData({
+      inputCmt: e.detail.value
+    })
+  },
+
+  toAgree: function (e) {
+    // console.log(list[this.data.currentIndex].goods_id);
+    var that = this;
+    let i = this.data.data_list[this.data.currentIndex]
+    i.agree = !i.agree
+    if (i.agree) {
+      i.agreeNum = i.agreeNum + 1
+      // console.log(i.agree);
+      //发送用户喜欢该商品的命令
+      wx: wx.request({
+        url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/insert_like_info',
+        data: {
+          user_id: app.globalData.user_id,
+          good_id: list[that.data.currentIndex].goods_id
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          // console.log(res.data)
         },
         fail: function (res) {
           console.log(res.data)
@@ -265,11 +371,12 @@ Page({
     } else if (!i.agree) {
       i.agreeNum = i.agreeNum - 1
       //发送用户不喜欢该商品的命令
+      // console.log(i.agree);
       wx: wx.request({
         url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/delete_like_info',
         data: {
           user_id: app.globalData.user_id,
-          good_id: that[that.data.currentIndex].goods_id
+          good_id: list[that.data.currentIndex].goods_id
         },
         header: {
           'content-type': 'application/json' // 默认值
@@ -278,7 +385,7 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: function (res) {
-          console.log(res.data)
+          // console.log(res.data)
         },
         fail: function (res) {
           console.log(res.data)
@@ -287,15 +394,20 @@ Page({
       })
     }
     that.setData({
-      data_list:list
+      data_list: list
     })
   },
 
   toComment: function () {
-    console.log('comment')
-    //评论页面================================
+    // console.log('comment')
+    //评论页面
+    this.setData({
+      showInput: true,
+      focusInput: true
+    })
 
   },
+
   //手指触摸动作开始 记录起点X坐标
   touchstart: function (e) {
     this.setData({
@@ -340,9 +452,9 @@ Page({
       scrollTop: 0
     })
     if (this.data.currentIndex != tag) {
-      console.log("tag changed!")
+      // console.log("tag changed!")
       //滑动获取当前good_id对应的信息
-      that.set_local_goods_info();
+      this.set_local_goods_info();
     }
 
   },
