@@ -16,14 +16,13 @@ Page({
       "教师",
       "IT",
       "医生",
-      "销售",
       "其他",
     ],  //下拉列表的数据
     // index: 0,  //选择的下拉列表下标
     userInfo: {},
     name: app.globalData.user_info["name"],
     age: app.globalData.user_info["age"],
-    phone: app.globalData.user_info["phone"],
+    phone: app.globalData.user_info["phone_num"],
     occupation: app.globalData.user_info["occupation"],
 
     verified_name: null,
@@ -87,7 +86,7 @@ Page({
     var tmp_phone = e.detail.value
     if (!re.test(tmp_phone)) {
       this.setData({
-        phone: app.globalData.user_info["phone"],
+        phone: app.globalData.user_info["phone_num"],
         verified_phone: "手机号输入不正确，请重新输入！"
       })
     }
@@ -126,7 +125,7 @@ Page({
     this.setData({
       name: app.globalData.user_info["name"],
       age: app.globalData.user_info["age"],
-      phone: app.globalData.user_info["phone"],
+      phone: app.globalData.user_info["phone_num"],
       occupation: app.globalData.user_info["occupation"],
     })
 
@@ -190,7 +189,7 @@ Page({
       that.data.name || that.data.age || that.data.phone) {
       app.globalData.user_info["name"] = that.data.name
       app.globalData.user_info["age"] = that.data.age
-      app.globalData.user_info["phone"] = that.data.phone
+      app.globalData.user_info["phone_num"] = that.data.phone
       app.globalData.user_info["occupation"] = that.data.occupation
       wx: wx.request({
         url: 'http://noob.chinanorth.cloudapp.chinacloudapi.cn:5000/perfect_info',
@@ -199,7 +198,7 @@ Page({
           name: app.globalData.user_info["name"],
           age: app.globalData.user_info["age"],
           occupation: app.globalData.user_info["occupation"],
-          phone_num: app.globalData.user_info["phone"],
+          phone_num: app.globalData.user_info["phone_num"],
         },
         header: {
           'content-type': 'application/json' // 默认值
